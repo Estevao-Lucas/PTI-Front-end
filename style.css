@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.apresentacao{
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.apresentacao__links{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+
+.apresentacao__links__link{
+    background-color: #f7eb0a;
+    width: 480px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 21.5px 0;
+    text-decoration: none;
+    color: blue;
+    font-family: 'Montserrat', sans-serif;
+}

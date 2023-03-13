@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="materias_medicas.css">
+    <title>Materias Medicas</title>
+</head>
+<body>
+    <header></header>
+    <main>
+       <form id="form">
+        <div class="pesquisa_substancia">
+            <div class="pesquisa_substancia__content">
+                <div class="pesquisa_substancia__inputs">
+                    <label for="pesquisa_substancia__input" class="pesquisa_substancia__label">Nome da Substância ou abreviação</label>
+                    <input type="input" class="pesquisa_substancia__input" placeholder="Pesquisar Substancia">
+                </div>
+                <button type="submit" class="pesquisa_substancia__button">PESQUISAR</button>
+            </div>
+        </div>
+       </form>
+        <section class="substancias__apresentacao">
+            <div class="substancias__apresentacao__table">
+                <table class="substancias__apresentacao__table__table">
+                    <tr class="substancias__apresentacao__table__head">
+                        <th>SUBSTANCIAS</th>
+                        <th>ABREVIAÇÃO</th>
+                        <th></th>
+                    </tr>
+                    <tr class="substancias__apresentacao__table__content">
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <div class="footer__content">
+            <a href="index.html" class="footer__sair">SAIR</a>
+            <button class="footer__button">INCLUIR SUBSTANCIA</button>
+        </div>
+    </footer>
+    <script src="materias_medicas.js"></script>
+</body>
+</html>

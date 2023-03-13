@@ -1,0 +1,171 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    border: 10px solid #ddd;
+    overflow:hidden;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top:  2px solid #ddd;
+ 
+  }
+
+.footer__content{
+    padding-top: 20px;
+    display: flex; 
+    color: #fff;
+    gap: 15px;
+    text-align: center;
+    justify-content: space-between; 
+    float: right;
+    margin-right:2%;
+    padding-bottom: 14px;
+}
+
+.footer__sair{
+    background-color: #f7eb0a;
+    text-align: center;
+    width: 78px;
+    padding: 14.5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: blue;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+}
+
+.footer__button{
+    background-color: #f7eb0a;
+    text-align: center;
+    width: 260px;
+    padding: 12.5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    border: 0;
+    text-decoration: none;
+    color: blue;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+}
+
+table, td, th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+  }
+
+.substancias__apresentacao{
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    padding-left: 50px;
+    border-top: 5px solid #ddd;
+
+}
+
+.substancias__apresentacao__table__table{
+    border-collapse: collapse;
+    width: 53%;
+  }
+
+  .td_button{
+    background-color: white;
+    cursor: pointer;
+    text-align: end;
+  }
+
+.btn {
+    border: none;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+  }
+
+.fa{
+    font-size: 20px;
+    color: #c5c5c5;
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+
+
+
+.substancias__apresentacao__table__head{
+    text-align: left;
+    background-color: #f0f0e9;
+
+}
+
+.substancias__apresentacao__table__content{
+    text-align: left;
+} 
+
+
+.pesquisa_substancia{
+    border-radius: 10px;
+    margin-left: 3%;
+    padding-bottom: 50px;
+}
+
+.pesquisa_substancia__content{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.pesquisa_substancia__input {
+    background: url(https://cdn-icons-png.flaticon.com/512/93/93642.png) no-repeat 10px 10px;
+    background-color: #ddd;
+    padding-left: 25px;
+    background-size: 20px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 8px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    text-indent: 30px;
+    color: white;
+  }
+  
+  .pesquisa_substancia__label{
+    font-size: 15px;
+    padding-bottom: 5px;
+    font-weight: 600;
+    color: #807a7a
+    ;
+  }
+  .pesquisa_substancia__inputs{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pesquisa_substancia__button {
+    width: 150px;
+    height: 38px;
+    bottom: auto;
+    border: 1px solid #d8e2eb;
+    border-radius: 5px;
+    background: #d8e2eb;
+    text-align: center;
+    font-weight: 700;
+    color: #4988c4;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 20px;
+    margin-top: 72px;
+  }
+
