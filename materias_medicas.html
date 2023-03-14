@@ -23,15 +23,7 @@
        </form>
         <section class="substancias__apresentacao">
             <div class="substancias__apresentacao__table">
-                <table class="substancias__apresentacao__table__table">
-                    <tr class="substancias__apresentacao__table__head">
-                        <th>SUBSTANCIAS</th>
-                        <th>ABREVIAÇÃO</th>
-                        <th></th>
-                    </tr>
-                    <tr class="substancias__apresentacao__table__content">
-                    </tr>
-                </table>
+                <table class="substancias__apresentacao__table__table"></table>
                 <button class="prevButton">Anterior</button> 
                 <button class="nextButton">Próximo</button> 
             </div>
@@ -50,6 +42,25 @@
                 <button class="btn-confirm">CONFIRMAR</button>
             </div>
         </section>
+        <section class="include hidden">
+            <div class="include-flex">
+                <button class="btn-close-include"><i class="gg-close-o"></i></button>
+            </div>
+            <div class="include-content">
+                <h2 class="modal-title-include"><strong>Inclusão de substância?</strong></h2>
+            </div>
+            <div class="modal-forms">
+                <form class="modal-forms-form">
+                    <label for="substance-name">Nome da Substância</label>
+                    <input type="text" id="substance-name" name="substance-name" placeholder="Digite Aqui">
+                    <label for="substance-abreviation">Abreviação</label>
+                    <input type="text" id="substance-abreviation" name="substance-abreviation" placeholder="Digite Aqui">
+                </form>
+            </div>
+            <div class="save">
+                <button class="btn-save">SALVAR</button>
+            </div>
+        </section>
         <div class="overlay hidden"></div>
     </main>
     <footer id="footer">
@@ -58,6 +69,10 @@
             <button class="footer__button">INCLUIR SUBSTANCIA</button>
         </div>
     </footer>
-    <script src="materias_medicas.js"></script>
+    <script src="./js/materias_medicas/get_materias_medicas.js"></script>
+    <script src="./js/materias_medicas/exclude_substance.js"></script>
+    <script src="./js/materias_medicas/include_substance.js"></script>
+    <script src="./js/materias_medicas/search.js"></script>
+    <script src="./js/materias_medicas/pagination.js"></script>
 </body>
 </html>

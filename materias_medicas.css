@@ -219,7 +219,6 @@ table, td, th {
   top: 35%;
   background-color: white;
   border: 1px solid #ddd;
-  border-radius: 15px;
   z-index: 2;
 }
 
@@ -253,6 +252,74 @@ table, td, th {
   box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
 }
 
+
+
+.modal-text{
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #807a7a;
+  padding: 15px;
+}
+
+.modal-title{ 
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+
+.include {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 600px;
+  padding: 20px;
+  height: 250px;
+  position: absolute;
+  margin-left: 27%;
+  top: 25%;
+  background-color: white;
+  border: 1px solid #ddd;
+  z-index: 2;
+  border-radius: 4px;
+}
+
+
+.modal-title-include{ 
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.btn-close-include {
+  float: right;
+  border: none;
+  outline: none;
+  background-color: white;
+}
+
+.btn-save{
+  background-color: #f7eb0a;
+  text-align: center;
+  float: right;
+  margin-top: 18%;
+  width: 160px;
+  height: 35px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 0;
+  text-decoration: none;
+  color: blue;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 5px;
+  box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
+}
+
+.modal-forms{
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -268,16 +335,4 @@ table, td, th {
 
 .hidden {
   display: none;
-}
-
-.modal-text{
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #807a7a;
-  padding: 15px;
-}
-
-.modal-title{ 
-  font-weight: 600;
-  margin-left: 10px;
 }
