@@ -7,8 +7,8 @@ searchForm.addEventListener("submit", (e) => {
     .item(0)
     .value.toLowerCase();
   let result =
-    vars.find((v) => v.substancia.toLowerCase() == search) ||
-    vars.find((v) => v.abreviacao.toLowerCase() == search);
+    substances.find((v) => v.name.toLowerCase() == search) ||
+    substances.find((v) => v.abbreviation.toLowerCase() == search);
   if (result) {
     remove_elements_from_table();
     add_elements_to_table([result]);
@@ -18,14 +18,14 @@ searchForm.addEventListener("submit", (e) => {
 
 const filterCallback = (substance, value) => {
   return (
-    substance.substancia.toLowerCase().includes(value.toLowerCase()) ||
-    substance.abreviacao.toLowerCase().includes(value.toLowerCase())
+    substance.name.toLowerCase().includes(value.toLowerCase()) ||
+    substance.abbreviation.toLowerCase().includes(value.toLowerCase())
   );
 };
 
 const setFilter = ({ target: { value } }) => {
   remove_elements_from_table();
-  const substanceToShow = vars.filter((substance) =>
+  const substanceToShow = substances.filter((substance) =>
     filterCallback(substance, value)
   );
   add_elements_to_table(substanceToShow);

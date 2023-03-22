@@ -1,12 +1,12 @@
 function previousPage() {
   if (curPage > 1) curPage--;
-  add_elements_to_table(vars);
+  add_elements_to_table(substances);
   openModalBtn();
 }
 
 function nextPage() {
-  if (curPage * pageSize < vars.length) curPage++;
-  add_elements_to_table(vars);
+  if (curPage * pageSize < substances.length) curPage++;
+  add_elements_to_table(substances);
   openModalBtn();
 }
 
@@ -16,3 +16,4 @@ document
 document
   .querySelector(".prevButton")
   .addEventListener("click", previousPage, false);
+openModalBtn();

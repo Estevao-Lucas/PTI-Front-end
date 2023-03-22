@@ -6,56 +6,14 @@ const container = document.getElementsByClassName(
 )[0];
 const pageSize = 5;
 let curPage = 1;
-let vars = [
-  {
-    id: 1,
-    substancia: "Acetato de ciproterona",
-    abreviacao: "ACC",
-  },
-  {
-    id: 2,
-    substancia: "Dipirona",
-    abreviacao: "DIP",
-  },
-  {
-    id: 3,
-    substancia: "Acetato de ciproterona",
-    abreviacao: "ACC",
-  },
-  {
-    id: 4,
-    substancia: "Dipirona",
-    abreviacao: "DIP",
-  },
-  {
-    id: 5,
-    substancia: "Acetato de ciproterona",
-    abreviacao: "ACC",
-  },
-  {
-    id: 6,
-    substancia: "Dipirona",
-    abreviacao: "DIP",
-  },
-  {
-    id: 7,
-    substancia: "Acetato de ciproterona",
-    abreviacao: "ACC",
-  },
-  {
-    id: 8,
-    substancia: "Dipirona",
-    abreviacao: "DIP",
-  },
-  {
-    substancia: "Acetato de ciproterona Ultimo",
-    abreviacao: "ACC",
-  },
-  {
-    substancia: "Dipirona",
-    abreviacao: "DIP",
-  },
-];
+let substances = [];
+async function getSubstances() {
+  const url = "http://localhost:8000/api/substances";
+  const response = await fetch(url);
+  const data = await response.json();
+  data.results.forEach((v) => substances.push(v));
+  return add_elements_to_table(data.results);
+}
 
 function add_elements_to_table(elements) {
   let result = "";
@@ -69,8 +27,8 @@ function add_elements_to_table(elements) {
       result += `
         <tr class="substancias__apresentacao__table__content">
             <td class="hidden">${v.id}</td>
-            <td>${v.substancia}</td>
-            <td>${v.abreviacao}</td>
+            <td>${v.name}</td>
+            <td>${v.abbreviation}</td>
             <td class="td_button"><button class="btn"><i class="fa fa-trash"></i></button></td>
         </tr>
         `;
@@ -81,6 +39,7 @@ function add_elements_to_table(elements) {
   <th>ABREVIAÇÃO</th>
   <th></th>
 </tr>` + result;
+  openModalBtn();
 }
 
 function remove_elements_from_table() {
@@ -91,5 +50,8 @@ function remove_elements_from_table() {
     elements[0].parentNode.removeChild(elements[0]);
   }
 }
+function refreshPage() {
+  window.location.reload();
+}
 
-add_elements_to_table(vars);
+getSubstances();
