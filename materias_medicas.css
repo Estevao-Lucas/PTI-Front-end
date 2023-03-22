@@ -222,9 +222,25 @@ table, td, th {
   z-index: 2;
 }
 
+
+
+.modal-text{
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #807a7a;
+  padding: 15px;
+}
+
+.modal-title{ 
+  font-weight: 600;
+  margin-left: 10px;
+}
+
 .modal .flex{
   display: flex;
-  margin-left: 98%;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -253,27 +269,53 @@ table, td, th {
 }
 
 
-
-.modal-text{
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #807a7a;
-  padding: 15px;
+.substance-name{
+  background-color: #f3f1f1;
+  background-size: 20px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 8px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  color: black;
+  outline: none;
+  box-shadow: 0 0 0.3rem 0 rgb(219, 219, 219);
+}
+.substance-abreviation{
+  background-color: #f3f1f1;
+  margin-left: 16px;
+  background-size: 20px;
+  width: 150px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 8px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  color: black;
+  outline: none;
+  box-shadow: 0 0 0.3rem 0 rgb(219, 219, 219);
 }
 
-.modal-title{ 
-  font-weight: 600;
-  margin-left: 10px;
+.label-substance-name{
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
 }
-
+.label-substance-abreviation{
+  padding-left: 190px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+}
 
 .include {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 600px;
-  padding: 20px;
-  height: 250px;
+  padding: 0 20px;
+  height: 300px;
   position: absolute;
   margin-left: 27%;
   top: 25%;
@@ -282,13 +324,11 @@ table, td, th {
   z-index: 2;
   border-radius: 4px;
 }
-
-
-.modal-title-include{ 
-  font-weight: 600;
-  padding-bottom: 10px;
+.btn-close-include{
+  position: absolute;
+  right: 1rem;
+  margin-top: .2rem;
 }
-
 .btn-close-include {
   float: right;
   border: none;
@@ -297,12 +337,13 @@ table, td, th {
 }
 
 .btn-save{
+  margin-left:440px;
   background-color: #f7eb0a;
   text-align: center;
   float: right;
-  margin-top: 18%;
+  margin-top:35%;
   width: 160px;
-  height: 35px;
+  height: 40px;
   font-size: 14px;
   font-weight: 600;
   border: 0;
@@ -314,10 +355,8 @@ table, td, th {
 }
 
 .modal-forms{
-  display: block;
-  flex-direction: column;
-  justify-content: center;
   position: absolute;
+  margin-bottom: 100px;
 }
 
 .overlay {

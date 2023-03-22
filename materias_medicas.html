@@ -43,7 +43,7 @@
             </div>
         </section>
         <section class="include hidden">
-            <div class="include-flex">
+            <div class="include-close-button">
                 <button class="btn-close-include"><i class="gg-close-o"></i></button>
             </div>
             <div class="include-content">
@@ -51,15 +51,14 @@
             </div>
             <div class="modal-forms">
                 <form class="modal-forms-form">
-                    <label for="substance-name">Nome da Substância</label>
-                    <input type="text" id="substance-name" name="substance-name" placeholder="Digite Aqui">
-                    <label for="substance-abreviation">Abreviação</label>
-                    <input type="text" id="substance-abreviation" name="substance-abreviation" placeholder="Digite Aqui">
+                    <label for="substance-name" class="label-substance-name">Nome da Substância</label>
+                    <label for="substance-abreviation" class="label-substance-abreviation">Abreviação</label>
+                    <br>
+                    <input type="text" class="substance-name" name="substance-name" placeholder="Digite Aqui">
+                    <input type="text" class="substance-abreviation" name="substance-abreviation" placeholder="Digite Aqui">
                 </form>
             </div>
-            <div class="save">
                 <button class="btn-save">SALVAR</button>
-            </div>
         </section>
         <div class="overlay hidden"></div>
     </main>
@@ -69,10 +68,10 @@
             <button class="footer__button">INCLUIR SUBSTANCIA</button>
         </div>
     </footer>
-    <script src="./js/materias_medicas/get_materias_medicas.js"></script>
     <script src="./js/materias_medicas/exclude_substance.js"></script>
     <script src="./js/materias_medicas/include_substance.js"></script>
     <script src="./js/materias_medicas/search.js"></script>
     <script src="./js/materias_medicas/pagination.js"></script>
+    <script src="./js/materias_medicas/get_materias_medicas.js"></script>
 </body>
 </html>
