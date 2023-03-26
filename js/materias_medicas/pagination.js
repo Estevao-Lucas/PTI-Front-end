@@ -1,12 +1,12 @@
 function previousPage() {
   if (curPage > 1) curPage--;
-  add_elements_to_table(substances);
+  addElementsToTable(substances);
   openModalBtn();
 }
 
 function nextPage() {
   if (curPage * pageSize < substances.length) curPage++;
-  add_elements_to_table(substances);
+  addElementsToTable(substances);
   openModalBtn();
 }
 

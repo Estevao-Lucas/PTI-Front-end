@@ -3,7 +3,7 @@ const closeIncludeModalBtn = document.querySelector(".btn-close-include");
 const saveIncludeModalBtn = document.querySelector(".btn-save");
 function openIncludeModalBtn() {
   document
-    .getElementsByClassName("footer__button")[0]
+    .getElementsByClassName("footer-button")[0]
     .addEventListener("click", () => {
       includeModal.classList.remove("hidden");
       overlay.classList.remove("hidden");

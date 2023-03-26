@@ -1,8 +1,8 @@
 let table = document.getElementsByClassName(
-  "substancias__apresentacao__table__table"
+  "substancias-apresentacao-table-table"
 );
 const container = document.getElementsByClassName(
-  "substancias__apresentacao__table"
+  "substancias-apresentacao-table"
 )[0];
 const pageSize = 5;
 let curPage = 1;
@@ -12,10 +12,10 @@ async function getSubstances() {
   const response = await fetch(url);
   const data = await response.json();
   data.results.forEach((v) => substances.push(v));
-  return add_elements_to_table(data.results);
+  return addElementsToTable(data.results);
 }
 
-function add_elements_to_table(elements) {
+function addElementsToTable(elements) {
   let result = "";
   let start = (curPage - 1) * pageSize;
   let end = curPage * pageSize;
@@ -25,16 +25,16 @@ function add_elements_to_table(elements) {
     })
     .forEach((v) => {
       result += `
-        <tr class="substancias__apresentacao__table__content">
+        <tr class="substancias-apresentacao-table-content">
             <td class="hidden">${v.id}</td>
             <td>${v.name}</td>
             <td>${v.abbreviation}</td>
-            <td class="td_button"><button class="btn"><i class="fa fa-trash"></i></button></td>
+            <td class="td-button"><button class="btn"><i class="fa fa-trash"></i></button></td>
         </tr>
         `;
     });
   table[0].innerHTML =
-    `<tr class="substancias__apresentacao__table__head">
+    `<tr class="substancias-apresentacao-table-head">
   <th>SUBSTANCIAS</th>
   <th>ABREVIAÇÃO</th>
   <th></th>
@@ -42,9 +42,9 @@ function add_elements_to_table(elements) {
   openModalBtn();
 }
 
-function remove_elements_from_table() {
+function removeElementsFromTable() {
   let elements = document.getElementsByClassName(
-    "substancias__apresentacao__table__content"
+    "substancias-apresentacao-table-content"
   );
   while (elements.length > 0) {
     elements[0].parentNode.removeChild(elements[0]);

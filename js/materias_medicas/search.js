@@ -3,15 +3,15 @@ let searchForm = document.getElementById("form");
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let search = document
-    .getElementsByClassName("pesquisa_substancia__input")
+    .getElementsByClassName("pesquisa_substancia-input")
     .item(0)
     .value.toLowerCase();
   let result =
     substances.find((v) => v.name.toLowerCase() == search) ||
     substances.find((v) => v.abbreviation.toLowerCase() == search);
   if (result) {
-    remove_elements_from_table();
-    add_elements_to_table([result]);
+    removeElementsFromTable();
+    addElementsToTable([result]);
     openModalBtn();
   }
 });
@@ -24,11 +24,11 @@ const filterCallback = (substance, value) => {
 };
 
 const setFilter = ({ target: { value } }) => {
-  remove_elements_from_table();
+  removeElementsFromTable();
   const substanceToShow = substances.filter((substance) =>
     filterCallback(substance, value)
   );
-  add_elements_to_table(substanceToShow);
+  addElementsToTable(substanceToShow);
   openModalBtn();
 };
 
