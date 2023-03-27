@@ -15,7 +15,7 @@ body{
     justify-content: space-between;
 }
 
-.apresentacao__links{
+.apresentacao-links{
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@ body{
 }
 
 
-.apresentacao__links__link{
+.apresentacao-links-link{
     background-color: #f7eb0a;
     width: 480px;
     text-align: center;
