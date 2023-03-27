@@ -188,7 +188,8 @@ table, td, th {
     color: blue;
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
-    margin-left: 45%;
+    float: right;
+    margin-right: 5px;
     margin-top: 0.5%;
     box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
 }
@@ -204,6 +205,9 @@ table, td, th {
   text-decoration: none;
   color: blue;
   font-family: 'Montserrat', sans-serif;
+  float: right;
+  margin-right: 47%;
+  margin-top: 0.5%;
   border-radius: 5px;
   box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
 }
