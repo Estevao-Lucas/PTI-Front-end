@@ -5,18 +5,22 @@
 
 body{
     height: 100vh;
+    width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    box-sizing: border-box;
+    border: 10px solid #ddd;
+    overflow:hidden;
 }
 
-.apresentacao{
+.apresentacao-options{
     margin-top: 12%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.apresentacao-links{
+.apresentacao-link-options{
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -25,7 +29,7 @@ body{
 }
 
 
-.apresentacao-links-link{
+.options-links{
     background-color: #f7eb0a;
     width: 480px;
     text-align: center;
