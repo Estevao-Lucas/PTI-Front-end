@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 10px solid #ddd;
+    overflow:hidden;
+}
+
+
+/* Inicio Header */
+
+#header{
+    top: 0;
+    width: 100%;
+    border-bottom:  2px solid #ddd;
+}
+
+.page-title{
+    padding: 1%;
+    border-bottom:  2px solid #ddd;
+}
+
+#title{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.header-content{
+    padding-top: 1.5%;
+    padding-bottom: 3%;
+    margin-left: 1%;
+}
+
+.header-label{
+    color: #807a7a;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header-input{
+    width: 500px;
+    height: 50px;
+    border: 1px solid #d8e2eb;
+    padding-left: 25px;
+    border-radius: 2px;
+    background: #eff1f1;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+/* Inicio do Footer */
+
+#footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top:  2px solid #ddd;
+}
+
+
+.footer-content{
+    padding-top: 2%;
+    display: flex; 
+    color: #fff;
+    gap: 15px;
+    text-align: center;
+    justify-content: space-between; 
+    float: right;
+    margin-right:2%;
+    padding-bottom: 2%;
+}
+
+.repertorizar{
+    background-color: #f7eb0a;
+    text-align: center;
+    width: 230px;
+    padding: 12.5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    border: 0;
+    text-decoration: none;
+    color: blue;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
+}
+
+.menu-principal{
+    width: 220px;
+    padding: 12.5px 0;
+    border: 1px solid #d8e2eb;
+    border-radius: 5px;
+    background: #b7d1e6;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #044583;
+    cursor: pointer;
+    box-shadow: 0 0 0.3rem 0 rgb(131, 128, 128);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Fim do Footer */
