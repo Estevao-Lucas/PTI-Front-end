@@ -7,9 +7,8 @@ body{
     height: 100vh;
     box-sizing: border-box;
     overflow: hidden;
-    box-sizing: border-box;
     border: 10px solid #ddd;
-    overflow:hidden;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -29,38 +28,50 @@ body{
 #title{
     font-size: 30px;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
 }
-
 
 .header-content{
-    padding-top: 1.5%;
-    padding-bottom: 3%;
-    margin-left: 1%;
+    width: 100vw;
+    padding: 1.5% 1%;
 }
-
+.header-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+.input-form{
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;   
+}
 .header-label{
+    font-size: 1.1rem;
     color: #807a7a;
-    font-size: 18px;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
 }
-
 .header-input{
-    width: 500px;
-    height: 50px;
-    border: 1px solid #d8e2eb;
-    padding-left: 25px;
-    border-radius: 2px;
-    background: #eff1f1;
+    width: 22vw;
+    border: none;
     outline: none;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    border-bottom: 2px solid #a2abb3;
+    background: #eff1f1;
+    padding: 15px;
 }
-
-
-
-
+.header-input:focus{
+    border-bottom: 2px solid #7a7a7a;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(../assets/icon-date.jpg) no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-size: 100%;
+    border-width: thin;
+}
 /* Inicio do Footer */
 
 #footer{
@@ -116,3 +127,9 @@ body{
 }
 
 /* Fim do Footer */
+
+@media screen and (max-width: 870px) {
+    .header-input{
+        min-width: 250px;
+    }
+} 
