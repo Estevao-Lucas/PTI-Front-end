@@ -213,18 +213,24 @@ table, td, th {
 }
 
 .modal {
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-class{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 550px;
   padding: 20px;
   height: 100px;
-  position: absolute;
-  margin-left: 27%;
-  top: 35%;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 2;
+  position: absolute;
 }
 
 
@@ -251,10 +257,13 @@ table, td, th {
 }
 
 .btn-close {
-  float: right;
+  position: relative;
+  top: .3rem;
+  right: 0;
   border: none;
   outline: none;
   background-color: white;
+
 }
 
 .btn-confirm{
@@ -315,6 +324,16 @@ table, td, th {
 }
 
 .include {
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+
+.include-class {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -322,8 +341,6 @@ table, td, th {
   padding: 0 20px;
   height: 300px;
   position: absolute;
-  margin-left: 27%;
-  top: 25%;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 2;
@@ -367,11 +384,9 @@ table, td, th {
 .overlay {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vw;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
   z-index: 1;
