@@ -73,9 +73,8 @@ body{
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    background: url(../assets/icon-date.png) no-repeat;
-    width: 30px;
-    /* height: 30px; */
+    background: url(../assets/calendar.png) no-repeat;
+    width: 20px;
     background-position: center;
     background-size: 100%;
 }
@@ -137,11 +136,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding-top: 10px;
 }
 
-.material-symbols-outlined{
-    color: rgb(70, 161, 204);
+#add-btn{
+    color: rgb(45, 138, 182);
 }
 
 .symptoms {
+    flex-wrap: wrap;
     width: 100%;
     padding-top: 2%;
 }
@@ -156,13 +156,27 @@ table, td, th {
 }
 
 th {
+    padding-left: 1.5%;
+    width: 10%;
     text-align: left;
     background-color: #f0f0e9;
 }
 
 td{
+    padding-left: 1.5%;
     text-align: left;
 } 
+
+.btn-remove {
+    margin-right: 2%;
+    float: right;
+    background: none;
+    border: none;
+}
+
+#img-btn-remove {
+    width: 1.5rem;
+}
 /* Fim do Main */
 
 
