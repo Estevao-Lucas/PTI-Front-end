@@ -1,3 +1,7 @@
+:root {
+    --main-font:'Montserrat', sans-serif;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -8,7 +12,7 @@ body{
     box-sizing: border-box;
     overflow: hidden;
     border: 10px solid #ddd;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--main-font);
 }
 
 
@@ -40,7 +44,7 @@ body{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: 5%;
+    gap: 2%;
 }
 
 .input-form{
@@ -61,6 +65,7 @@ body{
     border-bottom: 2px solid #a2abb3;
     background: #eff1f1;
     padding: 15px;
+    font-size: 1rem;
 }
 
 .header-input:focus{
@@ -74,6 +79,94 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-position: center;
     background-size: 100%;
 }
+
+
+/* Inicio Main */
+.main-content{
+    width: 100vw;
+    padding: 1.5% 2.3%;
+}
+
+
+.search-contents {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5%;
+}
+
+.search-content {
+    display: flex;
+    flex-direction: column; 
+    gap: 0.8rem;   
+}
+
+.main-label{
+    font-size: 1.1rem;
+    color: #807a7a;
+}
+
+.search-input{
+    width: 22vw;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #a2abb3;
+    background: #eff1f1;
+    padding: 0.9rem;
+    font-size: 0.95rem;
+}
+
+#search-symptom-label{
+    margin-left: 4%;
+}
+
+#search-symptom{
+    margin-left: 4%;
+}
+
+.add-symptom {
+    display: flex;
+    margin-top: 1.5%;
+    background: none;
+}
+
+.add-symptom-btn{
+    background: none;
+    border: none;
+    padding-top: 10px;
+}
+
+.material-symbols-outlined{
+    color: rgb(70, 161, 204);
+}
+
+.symptoms {
+    width: 100%;
+    padding-top: 2%;
+}
+
+.symptom-table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 8px 8px 0px;
+}
+
+th {
+    text-align: left;
+    background-color: #f0f0e9;
+}
+
+td{
+    text-align: left;
+} 
+/* Fim do Main */
+
+
+
 /* Inicio do Footer */
 
 #footer{
@@ -106,7 +199,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border: 0;
     text-decoration: none;
     color: blue;
-    font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
@@ -125,7 +217,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #044583;
     cursor: pointer;
     box-shadow: 0 0 0.3rem 0 rgb(131, 128, 128);
-    font-family: 'Montserrat', sans-serif;
 }
 
 /* Fim do Footer */
