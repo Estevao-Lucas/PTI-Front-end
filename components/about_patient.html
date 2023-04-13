@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/repertorizacao.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+    <title>TCC</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="page-title">
+            <h1 id="title">RESULTADO</h1>
+        </div>
+        <div class="header-content">
+            <form class="header-form">
+                <div class="input-form">
+                    <label for="child-name" class="header-label">Nome da Criança</label>
+                    <input type="text" class="header-input" id="child-name">
+                </div>
+                <div class="input-form">
+                    <label for="mother-name" class="header-label">Nome da Mãe</label>
+                    <input type="text" class="header-input" id="mother-name">
+                </div>
+                <div class="input-form">
+                    <label for="birthday" class="header-label">Nascimento</label>
+                    <input type="date" class="header-input" id="birthday">
+                </div>
+            </form>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="search-contents">
+            <div class="search-content">
+                <label for="search-category" class="main-label">Categoria</label>
+                <select name="search-category" id="search-category" class="search-input">
+                    <option>Categoria 1</option>
+                    <option>Categoria 2</option>
+                    <option>Categoria 3</option>
+                    <option>Categoria 4</option>
+                </select>
+            </div>
+            <div class="search-content">
+                <label for="search-symptom" class="main-label" id="search-symptom-label">Sintoma</label>
+                <input type="text" class="search-input" id="search-symptom">
+            </div>
+            <div class="add-symptom">
+                <button class="add-symptom-btn">
+                    <span class="material-symbols-outlined" id="add-btn">add_circle</span>
+                </button>
+            </div>
+        </div>
+        <div class="symptoms">
+            <table class="symptom-table">
+                <thead>
+                    <tr>
+                        <th>CATEGORIA</th>
+                        <th>SUB CATEGORIA</th>
+                        <th>NATUREZA</th>
+                        <th>PESO</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Categoria 1</td>
+                        <td>Sub Categoria 1</td>
+                        <td>Natureza 1</td>
+                        <td>Peso 1</td>
+                        <td>
+                            <button class="btn-remove">
+                                <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
+                            </button>
+                        </td>
+                    <tr>
+                        <td>Categoria 1</td>
+                        <td>Sub Categoria 1</td>
+                        <td>Natureza 1</td>
+                        <td>Peso 1</td>
+                        <td>
+                            <button class="btn-remove">
+                                <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
+                            </button>
+                        </td>
+                    <tr>
+                        <td>Categoria 1</td>
+                        <td>Sub Categoria 1</td>
+                        <td>Natureza 1</td>
+                        <td>Peso 1</td>
+                        <td>
+                            <button class="btn-remove">
+                                <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer id="footer">
+        <div class="footer-content">
+            <a href="../index.html" class="menu-principal">MENU PRINCIPAL</a>
+        </div>
+    </footer>
+</body>
+
+</html>

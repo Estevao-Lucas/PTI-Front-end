@@ -1,0 +1,31 @@
+.search-patient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    position: absolute;
+}
+
+.search-patient-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-patient-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 600px;      
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column; 
+}
+
+.form-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
