@@ -121,7 +121,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #search-symptom{
+    background: url(https://cdn-icons-png.flaticon.com/512/93/93642.png) no-repeat 0.8rem 0.8rem;
+    background-color: #eff1f1;
+    background-size: 1.25rem;
     margin-left: 4%;
+    padding-left: 2.5rem;
 }
 
 .add-symptom {
@@ -141,12 +145,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .symptoms {
-    flex-wrap: wrap;
-    width: 100%;
+    width: 100vw;
     padding-top: 2%;
 }
 
 .symptom-table {
+    width: 80%;
     border-collapse: collapse;
 }
 
@@ -157,7 +161,6 @@ table, td, th {
 
 th {
     padding-left: 1.5%;
-    width: 10%;
     text-align: left;
     background-color: #f0f0e9;
 }
@@ -168,7 +171,6 @@ td{
 } 
 
 .btn-remove {
-    margin-right: 2%;
     float: right;
     background: none;
     border: none;
