@@ -36,15 +36,6 @@
     <main class="main-content">
         <div class="search-contents">
             <div class="search-content">
-                <label for="search-category" class="main-label">Categoria</label>
-                <select name="search-category" id="search-category" class="search-input">
-                    <option>Categoria 1</option>
-                    <option>Categoria 2</option>
-                    <option>Categoria 3</option>
-                    <option>Categoria 4</option>
-                </select>
-            </div>
-            <div class="search-content">
                 <label for="search-symptom" class="main-label" id="search-symptom-label">Sintoma</label>
                 <input type="text" class="search-input" id="search-symptom">
             </div>
@@ -54,6 +45,37 @@
                 </button>
             </div>
         </div>
+        <section class="include hidden">
+            <div class="include-class">
+                <div class="include-close-button">
+                    <button class="btn-close-include"><i class="gg-close-o"></i></button>
+                </div>
+                <div class="include-content">
+                    <h2 class="include-title"><strong>Inclusão de Sintoma</strong></h2>
+                </div>
+                <div class="include-forms">
+                    <form class="include-forms-form">
+                        <div class="include-input">
+                            <label for="category" class="include-symptom-label">Sintoma</label>
+                            <input type="text" class="include-input-symptom" id="category" name="category" placeholder="Digite Aqui">
+                        </div>
+                        <div class="include-input">
+                            <label for="sub-category" class="include-symptom-label" id="label-sub-category">Sub Categoria</label>
+                            <input type="text" class="include-input-symptom" id="sub-category" name="sub-category" placeholder="Digite Aqui">
+                        </div>
+                        <div class="include-input">
+                            <label for="natureza"  class="include-symptom-label" id="label-natureza">Natureza</label>
+                            <input type="text" class="include-input-symptom" id="natureza" name="natureza" placeholder="Digite Aqui">
+                        </div>
+                        <div class="include-input">
+                            <label for="peso" class="include-symptom-label" id="label-peso">Peso</label>
+                            <input type="text"  class="include-input-symptom" id="peso" name="peso" placeholder="Digite Aqui">
+                        </div>
+                    </form>
+                </div>
+                    <button class="btn-save">SALVAR</button>
+            </div>
+        </section>
         <div class="symptoms">
             <table class="symptom-table">
                 <thead>
@@ -97,9 +119,37 @@
                             </button>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Categoria 1</td>
+                        <td>Sub Categoria 1</td>
+                        <td>Natureza 1</td>
+                        <td>Peso 1</td>
+                        <td>
+                            <button class="btn-remove">
+                                <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
+                            </button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
+        <section class="exclude hidden">
+            <div class="exclude-class">
+                <div class="flex">
+                    <button class="btn-close"><i class="gg-close-o"></i></button>
+                </div>
+                <div class="content">
+                    <h3 class="exclude-title"><strong>Confirma a exclusão de substância?</strong></h3>
+                    <p class="exclude-text">
+                    A exclusão do registro pode gerar inconsistência no processo de repertorização.
+                    </p>
+                </div>
+                <div class="confirm">
+                    <button class="btn-confirm">CONFIRMAR</button>
+                </div>
+            </div>
+        </section>
+        <div class="overlay hidden"></div>
     </main>
     <footer id="footer">
         <div class="footer-content">
@@ -107,6 +157,7 @@
             <button class="repertorizar">REPERTORIZAR</button>
         </div>
     </footer>
+    <script src="../js/repertorizacao/repertorizacao.js"></script>
 </body>
 
 </html>

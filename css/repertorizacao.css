@@ -1,3 +1,5 @@
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css');
+
 :root {
     --main-font:'Montserrat', sans-serif;
 }
@@ -50,7 +52,7 @@ body{
 .input-form{
     display: flex;
     flex-direction: column; 
-    gap: 10px;   
+    gap: 10px;
 }
 
 .header-label{
@@ -116,15 +118,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 0.95rem;
 }
 
-#search-symptom-label{
-    margin-left: 4%;
-}
-
 #search-symptom{
     background: url(https://cdn-icons-png.flaticon.com/512/93/93642.png) no-repeat 0.8rem 0.8rem;
     background-color: #eff1f1;
     background-size: 1.25rem;
-    margin-left: 4%;
     padding-left: 2.5rem;
 }
 
@@ -144,6 +141,110 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: rgb(45, 138, 182);
 }
 
+.include {
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .include-title{
+    padding-left: 3%;
+  }
+  .include-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+    padding-right: 1.2rem;
+    height: 300px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    z-index: 2;
+    border-radius: 4px;
+  }
+  .btn-close-include{
+    position: absolute;
+    right: 1rem;
+    margin-top: .2rem;
+    float: right;
+    border: none;
+    outline: none;
+    background-color: white;
+    z-index: 3;
+  }
+  
+  .btn-save{
+    margin-left:440px;
+    background-color: #f7eb0a;
+    text-align: center;
+    float: right;
+    margin-top:35%;
+    width: 160px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 0;
+    text-decoration: none;
+    color: blue;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
+  }
+
+  .include-forms{
+    position: absolute;
+    margin-bottom: 100px;
+  }
+
+  .include-forms-form{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 8%;
+    gap: 0.7rem;
+  }
+
+  .include-input{
+    width: 45%;
+    padding-left: 3%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .include-symptom-label{
+    color: #504e4e;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .include-input-symptom{
+    background-color: #f3f1f1;
+    width: 90%;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    height: 1.3rem;
+    border-radius: 5px 0 0 5px;
+    color: black;
+    outline: none;
+    box-shadow: 0 0 0.3rem 0 rgb(219, 219, 219);
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+  
 .symptoms {
     width: 100vw;
     padding-top: 2%;
@@ -179,6 +280,10 @@ td{
 #img-btn-remove {
     width: 1.5rem;
 }
+
+.hidden {
+    display: none;
+  }
 /* Fim do Main */
 
 
