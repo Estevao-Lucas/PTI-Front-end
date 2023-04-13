@@ -350,8 +350,6 @@ table, td, th {
   position: absolute;
   right: 1rem;
   margin-top: .2rem;
-}
-.btn-close-include {
   float: right;
   border: none;
   outline: none;
