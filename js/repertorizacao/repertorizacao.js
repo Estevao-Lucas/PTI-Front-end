@@ -1,17 +1,4 @@
-symptoms = [
-  {
-    categoria: "Categoria 1",
-    subCategoria: "Sub Categoria 1",
-    natureza: "Natureza 1",
-    peso: "Peso 1",
-  },
-  {
-    categoria: "Categoria 2",
-    subCategoria: "Sub Categoria 2",
-    natureza: "Natureza 1",
-    peso: "Peso 1",
-  },
-];
+let symptoms = [];
 
 let table = document.getElementsByClassName("symptom-table");
 
@@ -117,6 +104,7 @@ const saveSubstance = function () {
     peso: pesoInput.value,
   };
   symptoms.push(data);
+  addElementsToTable(symptoms);
   closeIncludeModal();
 };
 
@@ -124,3 +112,5 @@ saveIncludeModalBtn.addEventListener("click", saveSubstance);
 closeIncludeModalBtn.addEventListener("click", closeIncludeModal);
 overlay.addEventListener("click", closeIncludeModal);
 openIncludeModalBtn();
+
+addElementsToTable(symptoms);
