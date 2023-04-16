@@ -1,5 +1,29 @@
 let symptoms = [];
 
+let apiSymptoms = [
+  {
+    id: 1,
+    name: "Dor de cabeca",
+    nature: "Mental",
+    weight: 2,
+    sub_category: "Dor de cabeca a noite",
+  },
+  {
+    id: 2,
+    name: "Dor de cabeca",
+    nature: "Geral",
+    weight: 1,
+    sub_category: null,
+  },
+  {
+    id: 3,
+    name: "Dor de cabeca",
+    nature: "Mental",
+    weight: 2,
+    sub_category: "Dor de cabeca no almoco",
+  },
+];
+
 let table = document.getElementsByClassName("symptom-table");
 
 function addElementsToTable(elements) {
@@ -7,11 +31,12 @@ function addElementsToTable(elements) {
   elements.forEach((v) => {
     result += `
         <tbody>
-            <tr>
-                <td>${v.categoria}</td>
-                <td>${v.subCategoria}</td>
-                <td>${v.natureza}</td>
-                <td>${v.peso}</td>
+            <tr> 
+                <td hidden>${v.id}</td>
+                <td>${v.name}</td>
+                <td>${v.sub_category ? v.sub_category : "-"}</td>
+                <td>${v.nature}</td>
+                <td>${v.weight}</td>
                 <td>
                     <button class="btn-remove">
                         <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
@@ -50,8 +75,8 @@ let searchInput = document.getElementById("search-symptom");
 
 const filterCallback = (symptom, value) => {
   return (
-    symptom.categoria.toLowerCase().includes(value.toLowerCase()) ||
-    symptom.subCategoria.toLowerCase().includes(value.toLowerCase())
+    symptom.name.toLowerCase().includes(value.toLowerCase()) ||
+    symptom.sub_category.toLowerCase().includes(value.toLowerCase())
   );
 };
 
@@ -69,10 +94,11 @@ function searchSubstance(searchInput) {
 searchSubstance(searchInput);
 
 // Add Modal
+const tagError = document.getElementById("error-added-symptom");
 const overlay = document.querySelector(".overlay");
 const includeModal = document.querySelector(".include");
 const closeIncludeModalBtn = document.querySelector(".btn-close-include");
-const saveIncludeModalBtn = document.querySelector(".btn-save");
+const saveIncludeModalBtn = document.querySelector(".confirm-include");
 function openIncludeModalBtn() {
   document
     .getElementsByClassName("add-symptom-btn")[0]
@@ -82,35 +108,158 @@ function openIncludeModalBtn() {
     });
 }
 
-const openIncludeModal = function () {
-  includeModal.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-};
-
 const closeIncludeModal = function () {
+  tagError.classList.add("hidden");
+  tagError.innerHTML = "";
   includeModal.classList.add("hidden");
   overlay.classList.add("hidden");
 };
 
-const saveSubstance = function () {
-  let categoryInput = document.getElementById("category");
-  let subCategoryInput = document.getElementById("sub-category");
-  let naturezaInput = document.getElementById("natureza");
-  let pesoInput = document.getElementById("peso");
-  const data = {
-    categoria: categoryInput.value,
-    subCategoria: subCategoryInput.value,
-    natureza: naturezaInput.value,
-    peso: pesoInput.value,
-  };
-  symptoms.push(data);
-  addElementsToTable(symptoms);
-  closeIncludeModal();
-};
-
-saveIncludeModalBtn.addEventListener("click", saveSubstance);
 closeIncludeModalBtn.addEventListener("click", closeIncludeModal);
 overlay.addEventListener("click", closeIncludeModal);
 openIncludeModalBtn();
 
-addElementsToTable(symptoms);
+// Remove Modal
+
+function removeSymptom() {
+  const removeButtons = document.querySelectorAll(".btn-remove");
+  removeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = symptoms.findIndex((s) => s.name === this.value);
+      symptoms.splice(index, 1);
+      addElementsToTable(symptoms);
+      removeSymptom();
+    });
+  });
+}
+
+// Search
+const opcoesList = document.querySelector("#opcoes-list");
+opcoesList.addEventListener("keyup", () => {
+  const texto = opcoesList.value.toLowerCase();
+
+  for (let option of opcoesList.options) {
+    const optionTexto = option.value.toLowerCase();
+
+    optionTexto.includes(texto)
+      ? (option.style.display = "")
+      : (option.style.display = "none");
+  }
+  removeSymptom();
+});
+
+// add symptoms to options
+
+function addOptionsToSelect(symptoms) {
+  let options = "";
+  symptoms.forEach((symptom) => {
+    let subCategory = symptom.sub_category
+      ? symptom.sub_category
+      : symptom.name;
+    options += `<option value="${subCategory}">${subCategory}</option>`;
+  });
+  opcoesList.innerHTML = options;
+}
+
+addOptionsToSelect(apiSymptoms);
+
+// Add Symptoms with select option
+const opcoesInput = document.querySelector("#opcoes");
+
+const saveSubstance = function () {
+  let input = opcoesInput;
+
+  if (input.value === "") {
+    tagError.innerHTML = "<strong>Error</strong> Escolha um sintoma primeiro!";
+    tagError.classList.remove("hidden");
+    return;
+  }
+
+  const data = apiSymptoms.find((symptom) => {
+    let nameToCompare = symptom.sub_category
+      ? symptom.sub_category
+      : symptom.name;
+    return nameToCompare === input.value;
+  });
+
+  const index = symptoms.findIndex((s) => s.id === data.id);
+  if (index === -1) {
+    symptoms.push(data);
+    addElementsToTable(symptoms);
+    closeIncludeModal();
+  } else {
+    tagError.innerHTML = "<strong>Error</strong> Sintoma já adicionado!";
+    tagError.classList.remove("hidden");
+  }
+  removeSymptom();
+};
+
+// Repertorization
+
+const repertorizationModal = document.querySelector(".repertorization");
+const closeRepertorizationModalBtn = document.querySelector(
+  ".btn-close-repertorization"
+);
+const confirmRepertorizationModalBtn = document.querySelector(
+  ".confirm-repertorization"
+);
+
+function openRepertorizationModalBtn() {
+  document
+    .getElementsByClassName("repertorizar")[0]
+    .addEventListener("click", () => {
+      repertorizationModal.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    });
+}
+
+const closeRepertorizationModal = function () {
+  tagError.classList.add("hidden");
+  tagError.innerHTML = "";
+  repertorizationModal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+closeRepertorizationModalBtn.addEventListener(
+  "click",
+  closeRepertorizationModal
+);
+overlay.addEventListener("click", closeRepertorizationModal);
+
+openRepertorizationModalBtn();
+var forms = document.querySelectorAll(".needs-validation");
+function validateForm() {
+  "use strict";
+
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    document.getElementsByClassName("repertorizar")[0].addEventListener(
+      "click",
+      (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+      },
+      true
+    );
+  });
+}
+
+const confirmRepertorization = function () {
+  if (symptoms.length === 0) {
+    tagError.innerHTML =
+      "<strong>Error</strong> Adicione pelo menos um sintoma!";
+    tagError.classList.remove("hidden");
+    return;
+  }
+};
+
+confirmRepertorizationModalBtn.addEventListener(
+  "click",
+  confirmRepertorization
+);
+
+saveIncludeModalBtn.addEventListener("click", saveSubstance);
+removeSymptom();
+validateForm();
