@@ -53,6 +53,7 @@ body{
     display: flex;
     flex-direction: column; 
     gap: 10px;
+    height: 8rem;
 }
 
 .header-label{
@@ -156,10 +157,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .include-class {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 600px;
+    width: 37.5rem;
     padding-right: 1.2rem;
-    height: 300px;
+    height: 9.375rem;
     position: absolute;
     background-color: white;
     border: 1px solid #ddd;
@@ -168,24 +168,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   .btn-close-include{
     position: absolute;
-    right: 1rem;
-    margin-top: .2rem;
+    right: .375rem;
+    margin-top: .4rem;
     float: right;
     border: none;
     outline: none;
     background-color: white;
     z-index: 3;
   }
-  
-  .btn-save{
-    margin-left:440px;
+
+.include-symptom-text{
+    padding-top: 1.5%;
+    padding-left: 3%;
+    font-size: 1.1rem;
+    color: #807a7a;
+}
+
+  .confirm-include {
+    margin-left:26.875rem;
     background-color: #f7eb0a;
     text-align: center;
     float: right;
-    margin-top:35%;
     width: 160px;
     height: 40px;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
     border: 0;
     text-decoration: none;
@@ -193,56 +199,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
     box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
-  }
-
-  .include-forms{
-    position: absolute;
-    margin-bottom: 100px;
-  }
-
-  .include-forms-form{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 8%;
-    gap: 0.7rem;
-  }
-
-  .include-input{
-    width: 45%;
-    padding-left: 3%;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .include-symptom-label{
-    color: #504e4e;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-
-  .include-input-symptom{
-    background-color: #f3f1f1;
-    width: 90%;
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    height: 1.3rem;
-    border-radius: 5px 0 0 5px;
-    color: black;
-    outline: none;
-    box-shadow: 0 0 0.3rem 0 rgb(219, 219, 219);
-  }
-  
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vw;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(3px);
-    z-index: 1;
   }
   
 .symptoms {
@@ -280,6 +236,81 @@ td{
 #img-btn-remove {
     width: 1.5rem;
 }
+
+#error-added-symptom{
+    z-index: 3;
+}
+
+.repertorization {
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .repertorization-title{
+    padding-left: 3%;
+  }
+  .repertorization-class {
+    display: flex;
+    flex-direction: column;
+    width: 37.5rem;
+    padding-right: 1.2rem;
+    height: 9.375rem;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    z-index: 2;
+    border-radius: 4px;
+  }
+  .btn-close-repertorization{
+    position: absolute;
+    right: .375rem;
+    margin-top: .4rem;
+    float: right;
+    border: none;
+    outline: none;
+    background-color: white;
+    z-index: 3;
+  }
+
+.repertorization-symptom-text{
+    padding-top: 1.5%;
+    padding-left: 3%;
+    font-size: 1.1rem;
+    color: #807a7a;
+}
+
+  .confirm-repertorization {
+    margin-left:26.875rem;
+    background-color: #f7eb0a;
+    text-align: center;
+    float: right;
+    width: 160px;
+    height: 40px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 0;
+    text-decoration: none;
+    color: blue;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
+  }
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
 
 .hidden {
     display: none;
