@@ -57,17 +57,16 @@ function addElementsToTable(elements) {
       if (index >= start && index < end) return true;
     })
     .forEach((v) => {
-      const id = v.id;
       result += `
         <tbody>
             <tr> 
-                <td hidden>${id}</td>
+                <td hidden>${v.id}</td>
                 <td>${v.name}</td>
                 <td>${v.sub_category ? v.sub_category : "-"}</td>
                 <td>${v.nature}</td>
                 <td>${v.weight}</td>
                 <td>
-                    <button class="btn-remove" data-id="${id}">
+                    <button class="btn-remove" data-id="${v.id}">
                         <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
                     </button>
                 </td>
@@ -143,15 +142,20 @@ openIncludeModalBtn();
 // Remove Modal
 
 function removeSymptom() {
-  const removeButtons = document.querySelectorAll(".btn-remove");
+  let removeButtons = document.querySelectorAll(".btn-remove");
   removeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const id = button.getAttribute("data-id");
-      const index = symptoms.findIndex((s) => s.id == id);
-      symptoms.splice(index, 1);
-      addElementsToTable(symptoms);
-    });
+    const id = button.dataset.id;
+    console.log(id);
+    button.removeEventListener("click", handleRemoveSymptom);
+    button.addEventListener("click", handleRemoveSymptom);
   });
+}
+
+function handleRemoveSymptom(event) {
+  const id = event.currentTarget.getAttribute("data-id");
+  const index = symptoms.findIndex((s) => s.id == id);
+  symptoms.splice(index, 1);
+  addElementsToTable(symptoms);
 }
 
 // Search
@@ -307,7 +311,6 @@ confirmRepertorizationModalBtn.addEventListener(
 );
 
 saveIncludeModalBtn.addEventListener("click", saveSymptom);
-removeSymptom();
 validateForm();
 
 // Pagination
