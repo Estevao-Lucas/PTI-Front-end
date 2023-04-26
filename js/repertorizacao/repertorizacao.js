@@ -144,8 +144,6 @@ openIncludeModalBtn();
 function removeSymptom() {
   let removeButtons = document.querySelectorAll(".btn-remove");
   removeButtons.forEach((button) => {
-    const id = button.dataset.id;
-    console.log(id);
     button.removeEventListener("click", handleRemoveSymptom);
     button.addEventListener("click", handleRemoveSymptom);
   });
