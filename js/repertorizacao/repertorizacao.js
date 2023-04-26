@@ -22,29 +22,58 @@ let apiSymptoms = [
     weight: 2,
     sub_category: "Dor de cabeca no almoco",
   },
+  {
+    id: 4,
+    name: "Dor de cabeca",
+    nature: "Mental",
+    weight: 2,
+    sub_category: "Dor de cabeca no almoco2",
+  },
+  {
+    id: 5,
+    name: "Dor de cabeca",
+    nature: "Mental",
+    weight: 2,
+    sub_category: "Dor de cabeca no almoco3",
+  },
+  {
+    id: 6,
+    name: "Dor de cabeca",
+    nature: "Mental",
+    weight: 2,
+    sub_category: "Dor de cabeca no almoco4",
+  },
 ];
-
+const pageSize = 5;
+let curPage = 1;
 let table = document.getElementsByClassName("symptom-table");
 
 function addElementsToTable(elements) {
   let result = "";
-  elements.forEach((v) => {
-    result += `
+  let start = (curPage - 1) * pageSize;
+  let end = curPage * pageSize;
+  elements
+    .filter((row, index) => {
+      if (index >= start && index < end) return true;
+    })
+    .forEach((v) => {
+      const id = v.id;
+      result += `
         <tbody>
             <tr> 
-                <td hidden>${v.id}</td>
+                <td hidden>${id}</td>
                 <td>${v.name}</td>
                 <td>${v.sub_category ? v.sub_category : "-"}</td>
                 <td>${v.nature}</td>
                 <td>${v.weight}</td>
                 <td>
-                    <button class="btn-remove">
+                    <button class="btn-remove" data-id="${id}">
                         <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
                     </button>
                 </td>
             <tr>
         </tbody>`;
-  });
+    });
   table[0].innerHTML =
     `<thead>
     <tr>
@@ -55,16 +84,9 @@ function addElementsToTable(elements) {
         <th></th>
     </tr>
     </thead>` + result;
+  removeSymptom();
 }
 
-function removeElementsFromTable() {
-  let elements = document.getElementsByClassName(
-    "substancias-apresentacao-table-content"
-  );
-  while (elements.length > 0) {
-    elements[0].parentNode.removeChild(elements[0]);
-  }
-}
 function refreshPage() {
   window.location.reload();
 }
@@ -74,24 +96,23 @@ function refreshPage() {
 let searchInput = document.getElementById("search-symptom");
 
 const filterCallback = (symptom, value) => {
-  return (
-    symptom.name.toLowerCase().includes(value.toLowerCase()) ||
-    symptom.sub_category.toLowerCase().includes(value.toLowerCase())
-  );
+  return `${symptom.name} ${symptom.sub_category}`
+    .toLowerCase()
+    .includes(value.toLowerCase());
 };
 
 const setFilter = ({ target: { value } }) => {
-  removeElementsFromTable();
   const symptomsToShow = symptoms.filter((symptom) =>
     filterCallback(symptom, value)
   );
   addElementsToTable(symptomsToShow);
+  removeSymptom();
 };
 
-function searchSubstance(searchInput) {
+function searchSymptom(searchInput) {
   searchInput.addEventListener("keyup", setFilter);
 }
-searchSubstance(searchInput);
+searchSymptom(searchInput);
 
 // Add Modal
 const tagError = document.getElementById("error-added-symptom");
@@ -125,10 +146,10 @@ function removeSymptom() {
   const removeButtons = document.querySelectorAll(".btn-remove");
   removeButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const index = symptoms.findIndex((s) => s.name === this.value);
+      const id = button.getAttribute("data-id");
+      const index = symptoms.findIndex((s) => s.id == id);
       symptoms.splice(index, 1);
       addElementsToTable(symptoms);
-      removeSymptom();
     });
   });
 }
@@ -166,9 +187,8 @@ addOptionsToSelect(apiSymptoms);
 // Add Symptoms with select option
 const opcoesInput = document.querySelector("#opcoes");
 
-const saveSubstance = function () {
+const saveSymptom = function () {
   let input = opcoesInput;
-
   if (input.value === "") {
     tagError.innerHTML = "<strong>Error</strong> Escolha um sintoma primeiro!";
     tagError.classList.remove("hidden");
@@ -247,12 +267,38 @@ function validateForm() {
 }
 
 const confirmRepertorization = function () {
+  const url = "http://localhost:8000/api/patients";
   if (symptoms.length === 0) {
     tagError.innerHTML =
       "<strong>Error</strong> Adicione pelo menos um sintoma!";
     tagError.classList.remove("hidden");
     return;
   }
+  const data = {
+    child_name: document.getElementById("child-name").value,
+    mothers_name: document.getElementById("mother-name").value,
+    birthday: document.getElementById("birthday").value,
+  };
+  const symptomsIds = symptoms.map((symptom) => symptom.id);
+  let symptomsIdsString = [];
+  symptomsIds.forEach((id) => {
+    symptomsIdsString.push({ id: id });
+  });
+  let bodyToPost = JSON.stringify({
+    name: data.child_name,
+    mothers_name: data.mothers_name,
+    birth_date: data.birthday,
+    symptoms: symptomsIdsString,
+  });
+  // TODO: add error handling
+  fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: bodyToPost,
+  });
+  closeRepertorizationModal();
 };
 
 confirmRepertorizationModalBtn.addEventListener(
@@ -260,6 +306,30 @@ confirmRepertorizationModalBtn.addEventListener(
   confirmRepertorization
 );
 
-saveIncludeModalBtn.addEventListener("click", saveSubstance);
+saveIncludeModalBtn.addEventListener("click", saveSymptom);
 removeSymptom();
 validateForm();
+
+// Pagination
+
+function previousPage() {
+  if (curPage > 1) curPage--;
+  removeSymptom();
+  addElementsToTable(symptoms);
+}
+
+function nextPage() {
+  if (curPage * pageSize < symptoms.length) curPage++;
+  removeSymptom();
+  addElementsToTable(symptoms);
+}
+
+document
+  .querySelector("#nextButton")
+  .addEventListener("click", nextPage, false);
+document
+  .querySelector("#prevButton")
+  .addEventListener("click", previousPage, false);
+
+removeSymptom();
+addElementsToTable(symptoms);
