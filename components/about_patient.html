@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/repertorizacao.css">
+    <link rel="stylesheet" href="../css/about_patient.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
     <title>TCC</title>
@@ -13,47 +14,66 @@
 
 <body>
     <header id="header">
+        <div class="alert alert-danger hidden" role="alert" id="error-added-symptom">
+          </div>
         <div class="page-title">
-            <h1 id="title">RESULTADO</h1>
+            <h1 id="title">PACIENTE</h1>
         </div>
         <div class="header-content">
-            <form class="header-form">
-                <div class="input-form">
-                    <label for="child-name" class="header-label">Nome da Criança</label>
-                    <input type="text" class="header-input" id="child-name">
+            <div class="patient-information">
+                <img src="" alt="carrinho de bebe">
+                <div class="patient-data">
+                    <h1>Bernardo da Silva</h1>
+                    <h3>Criança</h3>
                 </div>
-                <div class="input-form">
-                    <label for="mother-name" class="header-label">Nome da Mãe</label>
-                    <input type="text" class="header-input" id="mother-name">
+            </div>
+            <div class="patient-information">
+                <img src="" alt="carrinho de bebe">
+                <div class="patient-data">
+                    <h1>Maria da Silva</h1>
+                    <h3>Mae</h3>
                 </div>
-                <div class="input-form">
-                    <label for="birthday" class="header-label">Nascimento</label>
-                    <input type="date" class="header-input" id="birthday">
+            </div>
+            <div class="patient-information">
+                <img src="" alt="caixa de presente">
+                <div class="patient-data">
+                    <h1>26/07/2021</h1>
+                    <h3>Nascimento</h3>
                 </div>
-            </form>
+            </div>
         </div>
     </header>
     <main class="main-content">
         <div class="search-contents">
             <div class="search-content">
-                <label for="search-category" class="main-label">Categoria</label>
-                <select name="search-category" id="search-category" class="search-input">
-                    <option>Categoria 1</option>
-                    <option>Categoria 2</option>
-                    <option>Categoria 3</option>
-                    <option>Categoria 4</option>
-                </select>
-            </div>
-            <div class="search-content">
                 <label for="search-symptom" class="main-label" id="search-symptom-label">Sintoma</label>
                 <input type="text" class="search-input" id="search-symptom">
             </div>
+            <div class="search-content">
+                <label for="opcoes" class="main-label">Categoria</label>
+                <input type="text" list="opcoes-list" id="opcoes" class="search-input">
+                <datalist id="opcoes-list"></datalist>
+            </div>
             <div class="add-symptom">
                 <button class="add-symptom-btn">
-                    <span class="material-symbols-outlined" id="add-btn">add_circle</span>
+                    <span id="add-btn"><img src="../assets/add.png" alt="add button" id="add-img"></span>
                 </button>
             </div>
         </div>
+        <section class="include hidden">
+            <div class="include-class">
+                <div class="include-close-button">
+                    <button class="btn-close-include"><i class="gg-close-o"></i></button>
+                </div>
+                <div class="include-content">
+                    <h2 class="include-title"><strong>Inclusão de Sintoma</strong></h2>
+                </div>
+                <div class="include-symptom-text">
+                    <p>Confima a inclusao de sintoma para repertorização?</p>
+                </div>
+                    <button class="confirm-include">CONFIRMAR</button>
+            </div>
+        </section>
         <div class="symptoms">
             <table class="symptom-table">
                 <thead>
@@ -65,47 +85,35 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Categoria 1</td>
-                        <td>Sub Categoria 1</td>
-                        <td>Natureza 1</td>
-                        <td>Peso 1</td>
-                        <td>
-                            <button class="btn-remove">
-                                <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
-                            </button>
-                        </td>
-                    <tr>
-                        <td>Categoria 1</td>
-                        <td>Sub Categoria 1</td>
-                        <td>Natureza 1</td>
-                        <td>Peso 1</td>
-                        <td>
-                            <button class="btn-remove">
-                                <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
-                            </button>
-                        </td>
-                    <tr>
-                        <td>Categoria 1</td>
-                        <td>Sub Categoria 1</td>
-                        <td>Natureza 1</td>
-                        <td>Peso 1</td>
-                        <td>
-                            <button class="btn-remove">
-                                <img src="../assets/close-btn.png" alt="botao de excluir" id="img-btn-remove"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
             </table>
+            <div class="pagination">
+                <button id="prevButton" class="pagination-button">Anterior</button> 
+                <button id="nextButton" class="pagination-button">Próximo</button>
+            </div>
         </div>
+        <section class="repertorization hidden">
+            <div class="repertorization-class">
+                <div class="repertorization-close-button">
+                    <button class="btn-close-repertorization"><i class="gg-close-o"></i></button>
+                </div>
+                <div class="repertorization-content">
+                    <h2 class="repertorization-title"><strong>Repertorizar</strong></h2>
+                </div>
+                <div class="repertorization-symptom-text">
+                    <p>Confima a ação de repertorização?</p>
+                </div>
+                    <button class="confirm-repertorization">CONFIRMAR</button>
+            </div>
+        </section>
+        <div class="overlay hidden"></div>
     </main>
     <footer id="footer">
         <div class="footer-content">
             <a href="../index.html" class="menu-principal">MENU PRINCIPAL</a>
+            <button class="repertorizar">REPERTORIZAR</button>
         </div>
     </footer>
+    <script src="../js/repertorizacao/repertorizacao.js"></script>
 </body>
 
 </html>
