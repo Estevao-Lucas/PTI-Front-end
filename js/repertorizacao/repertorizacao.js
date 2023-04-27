@@ -1,49 +1,15 @@
 let symptoms = [];
 
-let apiSymptoms = [
-  {
-    id: 1,
-    name: "Dor de cabeca",
-    nature: "Mental",
-    weight: 2,
-    sub_category: "Dor de cabeca a noite",
-  },
-  {
-    id: 2,
-    name: "Dor de cabeca",
-    nature: "Geral",
-    weight: 1,
-    sub_category: null,
-  },
-  {
-    id: 3,
-    name: "Dor de cabeca",
-    nature: "Mental",
-    weight: 2,
-    sub_category: "Dor de cabeca no almoco",
-  },
-  {
-    id: 4,
-    name: "Dor de cabeca",
-    nature: "Mental",
-    weight: 2,
-    sub_category: "Dor de cabeca no almoco2",
-  },
-  {
-    id: 5,
-    name: "Dor de cabeca",
-    nature: "Mental",
-    weight: 2,
-    sub_category: "Dor de cabeca no almoco3",
-  },
-  {
-    id: 6,
-    name: "Dor de cabeca",
-    nature: "Mental",
-    weight: 2,
-    sub_category: "Dor de cabeca no almoco4",
-  },
-];
+let apiSymptoms = [];
+
+async function getSymptoms() {
+  const url = "http://localhost:8000/api/symptoms";
+  const response = await fetch(url);
+  const data = await response.json();
+  data.results.forEach((v) => apiSymptoms.push(v));
+  return addOptionsToSelect(data.results);
+}
+
 const pageSize = 5;
 let curPage = 1;
 let table = document.getElementsByClassName("symptom-table");
@@ -183,8 +149,6 @@ function addOptionsToSelect(symptoms) {
   });
   opcoesList.innerHTML = options;
 }
-
-addOptionsToSelect(apiSymptoms);
 
 // Add Symptoms with select option
 const opcoesInput = document.querySelector("#opcoes");
@@ -334,3 +298,4 @@ document
 
 removeSymptom();
 addElementsToTable(symptoms);
+getSymptoms();
