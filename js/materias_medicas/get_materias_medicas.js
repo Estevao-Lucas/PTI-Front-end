@@ -8,7 +8,7 @@ const pageSize = 5;
 let curPage = 1;
 let substances = [];
 async function getSubstances() {
-  const url = "http://localhost:8000/api/substances";
+  const url = "http://localhost:8000/api/substances/";
   const response = await fetch(url);
   const data = await response.json();
   data.results.forEach((v) => substances.push(v));

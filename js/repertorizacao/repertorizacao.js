@@ -3,7 +3,7 @@ let symptoms = [];
 let apiSymptoms = [];
 
 async function getSymptoms() {
-  const url = "http://localhost:8000/api/symptoms";
+  const url = "http://localhost:8000/api/symptoms/";
   const response = await fetch(url);
   const data = await response.json();
   data.results.forEach((v) => apiSymptoms.push(v));
@@ -233,7 +233,7 @@ function validateForm() {
 }
 
 const confirmRepertorization = function () {
-  const url = "http://localhost:8000/api/patients";
+  const url = "http://localhost:8000/api/patients/";
   if (symptoms.length === 0) {
     tagError.innerHTML =
       "<strong>Error</strong> Adicione pelo menos um sintoma!";
@@ -297,5 +297,5 @@ document
   .addEventListener("click", previousPage, false);
 
 removeSymptom();
-addElementsToTable(symptoms);
+// addElementsToTable(symptoms);
 getSymptoms();

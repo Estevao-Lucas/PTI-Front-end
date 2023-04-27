@@ -26,7 +26,7 @@ const saveSubstance = function () {
   const abbreviation = document.getElementsByClassName(
     "substance-abreviation"
   )[0].value;
-  const url = "http://localhost:8000/api/substances";
+  const url = "http://localhost:8000/api/substances/";
   const data = {
     name: substanceName,
     abbreviation: abbreviation,
