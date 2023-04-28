@@ -16,14 +16,28 @@ async function getPatient() {
   const data = await response.json();
   addPatientData(data);
   addElementsToSubstanceTable(data);
+  normalizeSymptoms(data.symptoms);
   console.log(data);
+  console.log(symptoms);
   return data;
 }
 
-let patient = getPatient();
+getPatient();
+
+function normalizeSymptoms(_symptoms) {
+  _symptoms.forEach((v) => {
+    symptoms.push({
+      id: v.id,
+      name: v.name,
+      sub_category: v.sub_category.name,
+      nature: v.nature,
+      weight: v.weight,
+    });
+  });
+  addElementsToTable(symptoms);
+}
 
 let headerContent = document.getElementsByClassName("header-content");
-
 function addPatientData(patient) {
   const birthDate = new Date(patient.birth_date);
   const formattedDate = `${birthDate.getDate().toString().padStart(2, "0")}/${(
@@ -189,7 +203,7 @@ overlay.addEventListener("click", closeIncludeModal);
 openIncludeModalBtn();
 
 // Remove Modal
-
+// TODO Adicionar o modal de remover sintoma junto da requisição PUT para remover o sintoma
 function removeSymptom() {
   let removeButtons = document.querySelectorAll(".btn-remove");
   removeButtons.forEach((button) => {
@@ -316,27 +330,19 @@ function validateForm() {
 }
 
 const confirmRepertorization = function () {
-  const url = "http://localhost:8000/api/patients/";
+  const url = "http://localhost:8000/api/patients/1";
   if (symptoms.length === 0) {
     tagError.innerHTML =
       "<strong>Error</strong> Adicione pelo menos um sintoma!";
     tagError.classList.remove("hidden");
     return;
   }
-  const data = {
-    child_name: document.getElementById("child-name").value,
-    mothers_name: document.getElementById("mother-name").value,
-    birthday: document.getElementById("birthday").value,
-  };
   const symptomsIds = symptoms.map((symptom) => symptom.id);
   let symptomsIdsString = [];
   symptomsIds.forEach((id) => {
     symptomsIdsString.push({ id: id });
   });
   let bodyToPost = JSON.stringify({
-    name: data.child_name,
-    mothers_name: data.mothers_name,
-    birth_date: data.birthday,
     symptoms: symptomsIdsString,
   });
   // TODO: add error handling
@@ -344,7 +350,7 @@ const confirmRepertorization = function () {
     headers: {
       "Content-Type": "application/json",
     },
-    method: "POST",
+    method: "PUT",
     body: bodyToPost,
   });
   closeRepertorizationModal();
@@ -380,5 +386,4 @@ document
   .addEventListener("click", previousPage, false);
 
 removeSymptom();
-// addElementsToTable(symptoms);
 getSymptoms();
