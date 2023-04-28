@@ -13,7 +13,6 @@ body{
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
-    overflow: hidden;
     border: 10px solid #ddd;
     font-family: var(--main-font);
 }
@@ -41,11 +40,26 @@ body{
     width: 100vw;
     padding: 1.5% 1%;
     display: flex;
-    gap: 14rem;
+    gap: 27rem;
 }
 
 .patient-information{
     display: flex;
+    gap: 1.5rem;
+}
+
+.patient-img{
+    display: flex;
+    width: 4.0625rem;
+    height: 4.0625rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #e3effc;
+}
+
+.patient-information img{
+    width: 3rem;
+    height: 3rem;
 }
 
 .patient-data h1{
@@ -180,21 +194,26 @@ body{
     box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
   }
   
-.symptoms {
+.tables {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+.content-table {
     width: 100%;
     padding-top: 2%;
 }
 
-.symptom-table {
-    width: 80%;
+table {
+    width: 70%;
     border-collapse: collapse;
-    
 }
 
 .pagination {
     float: right;
     padding-top: 0.5%;
-    margin-right: 20%;
+    margin-right: 30%;
     display: flex;
     gap: 0.3rem;
 }
@@ -217,12 +236,6 @@ body{
     cursor: pointer;
 }
 
-.invalid-feedback{
-    color: rgb(129, 7, 7);
-    font-size: 1rem !important;
-    font-weight: bold;
-    text-decoration: none;
-}
 
 table, td, th {
     border-bottom: 1px solid #ddd;

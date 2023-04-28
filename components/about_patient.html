@@ -20,27 +20,6 @@
             <h1 id="title">PACIENTE</h1>
         </div>
         <div class="header-content">
-            <div class="patient-information">
-                <img src="" alt="carrinho de bebe">
-                <div class="patient-data">
-                    <h1>Bernardo da Silva</h1>
-                    <h3>Criança</h3>
-                </div>
-            </div>
-            <div class="patient-information">
-                <img src="" alt="carrinho de bebe">
-                <div class="patient-data">
-                    <h1>Maria da Silva</h1>
-                    <h3>Mae</h3>
-                </div>
-            </div>
-            <div class="patient-information">
-                <img src="" alt="caixa de presente">
-                <div class="patient-data">
-                    <h1>26/07/2021</h1>
-                    <h3>Nascimento</h3>
-                </div>
-            </div>
         </div>
     </header>
     <main class="main-content">
@@ -74,21 +53,35 @@
                     <button class="confirm-include">CONFIRMAR</button>
             </div>
         </section>
-        <div class="symptoms">
-            <table class="symptom-table">
-                <thead>
-                    <tr>
-                        <th>CATEGORIA</th>
-                        <th>SUB CATEGORIA</th>
-                        <th>NATUREZA</th>
-                        <th>PESO</th>
-                        <th></th>
-                    </tr>
-                </thead>
-            </table>
-            <div class="pagination">
-                <button id="prevButton" class="pagination-button">Anterior</button> 
-                <button id="nextButton" class="pagination-button">Próximo</button>
+        <div class="tables">
+            <div class="content-table">
+                <table class="symptom-table">
+                    <thead>
+                        <tr>
+                            <th>CATEGORIA</th>
+                            <th>SUB CATEGORIA</th>
+                            <th>NATUREZA</th>
+                            <th>PESO</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="pagination">
+                    <button id="prevButton" class="pagination-button">Anterior</button> 
+                    <button id="nextButton" class="pagination-button">Próximo</button>
+                </div>
+            </div>
+            <div class="content-table">
+                <table class="substance-table">
+                    <thead>
+                        <tr>
+                            <th>SUBSTANCIA</th>
+                            <th>PONTUAÇÃO</th>
+                            <th>SINTOMAS COBERTOS</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
         <section class="repertorization hidden">
@@ -113,7 +106,7 @@
             <button class="repertorizar">REPERTORIZAR</button>
         </div>
     </footer>
-    <script src="../js/repertorizacao/repertorizacao.js"></script>
+    <script src="../js/about_patient/main.js"></script>
 </body>
 
 </html>
