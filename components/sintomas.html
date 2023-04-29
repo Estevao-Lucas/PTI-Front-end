@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Manutenção de Sintomas</title>
+</head>
+<body>
+<main class="bg-gray-300 h-screen">
+    <section>
+        <div class="px-6 py-2">
+            <div class="bg-white shadow">
+                <div class="p-4 border-b">
+                    Consulta
+                </div>
+                <div class="flex items-center p-3 w-full space-x-6">
+                    <label class="block">
+                        <span class="text-gray-700 text-sm">Categoria</span>
+                        <input type="text" class="
+                    mt-1
+                    text-sm
+                    block
+                    max-w-sm
+                    w-full
+                    rounded-md
+                    border-gray-300
+                    shadow-sm
+                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                  " placeholder="Digite aqui">
+                    </label>
+                    <label class="block">
+                        <span class="text-gray-700 text-sm">Sub-Categoria</span>
+                        <select class="
+          text-sm
+                    text-gray-500
+                    block
+                    max-w-sm
+                    w-full
+                    mt-1
+                    rounded-md
+                    border-gray-300
+                    shadow-sm
+                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                  ">
+                            <option>Selecione</option>
+                            <option>Exemplo 1</option>
+                            <option>Exemplo 2</option>
+                        </select>
+                    </label>
+                    <button class="rounded bg-blue-200 text-blue-600 py-1 px-3 font-semibold text-sm hover:bg-blue-300">
+                        Pesquisar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="px-6 py-2">
+            <div class="border-b shadow bg-white">
+                <div class="p-4 space-y-6">
+                    <table class="table-auto w-full">
+                        <thead class="bg-gray-200 text-left text-sm border-b border-gray-300">
+                        <tr>
+                            <th class="p-2">CATEGORIA</th>
+                            <th>SUB_CATEGORIA</th>
+                            <th>NATUREZA</th>
+                            <th>PESO</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-sm border-b text-gray-900">
+                            <td class="p-2">Dor de cabeça</td>
+                            <td>Dor de cabeça pela manhã</td>
+                            <td>Físico</td>
+                            <td>2</td>
+                            <td>actions</td>
+                        </tr>
+                        <tr class="text-sm border-b text-gray-900">
+                            <td class="p-2">Dor de cabeça</td>
+                            <td>Dor de cabeça pela manhã</td>
+                            <td>Físico</td>
+                            <td>2</td>
+                            <td>actions</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="flex items-center space-x-32">
+                    <span class="text-sm text-blue-600 leading-none cursor-pointer">
+                        Mostrar tudo
+                    </span>
+                        <div class="flex items-center">
+                        <span class="text-xs text-gray-300 mr-3 leading-none">
+                            Mostrando 1-10 de 100 itens
+                        </span>
+                            <div class="flex space-x-2 items-center">
+                                <span class="cursor-pointer text-xs leading-none text-gray-400"><</span>
+                                <span class="cursor-pointer py-1 px-2 rounded-full bg-yellow-400 text-blue-600 text-xs leading-none">1</span>
+                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded">2</span>
+                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded">3</span>
+                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded">4</span>
+                                <span class="cursor-pointer text-xs leading-none text-gray-600"> > </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 space-y-6 border-t">
+                    <div class="flex justify-end space-x-2">
+                        <button class="rounded text-sm bg-blue-200 text-blue-600 p-2 cursor-pointer hover:bg-blue-300">MENU PRINCIPAL</button>
+                        <button class="rounded text-sm bg-yellow-300 text-blue-600 p-2 cursor-pointer hover:bg-yellow-400">NOVO SINTOMA</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</main>
+<footer id="footer">
+
+</footer>
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+
+    body{
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+        /*box-sizing: border-box;*/
+        /*border: 10px solid #ddd;*/
+        overflow:hidden;
+        font-family: 'Quicksand', sans-serif;
+    }
+</style>
+</html>
