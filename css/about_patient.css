@@ -12,9 +12,10 @@
 body{
     width: 100vw;
     height: 100vh;
+    overflow: auto;
     box-sizing: border-box;
-    border: 10px solid #ddd;
     font-family: var(--main-font);
+    position: relative;
 }
 
 
@@ -40,7 +41,7 @@ body{
     width: 100vw;
     padding: 1.5% 1%;
     display: flex;
-    gap: 27rem;
+    gap: 25%;
 }
 
 .patient-information{
@@ -197,12 +198,16 @@ body{
 .tables {
     display: flex;
     flex-direction: column;
-    gap: 8rem;
+    gap: 4rem;
 }
 
 .content-table {
     width: 100%;
     padding-top: 2%;
+}
+
+#substance-table{
+    padding-bottom: 5%;
 }
 
 table {
@@ -268,6 +273,8 @@ td{
 }
 
 .repertorization {
+    top: 0;
+    bottom: 0;
     width: 100vw;
     position: absolute;
     display: flex;
@@ -347,7 +354,10 @@ td{
 /* Inicio do Footer */
 
 #footer{
-    position: absolute;
+    display: flex;
+    padding-top: 1.5%;
+    justify-content: end;
+    position: relative;
     bottom: 0;
     width: 100%;
     border-top: 2px solid #ddd;
@@ -355,15 +365,12 @@ td{
 
 
 .footer-content{
-    padding-top: 1%;
     display: flex; 
     color: #fff;
     gap: 0.9rem;
-    text-align: center;
-    justify-content: space-between; 
     float: right;
-    margin-right:2%;
-    padding-bottom: 1%;
+    padding-right: 1.5%;
+    padding-bottom: 0.5%;
 }
 
 .repertorizar{
