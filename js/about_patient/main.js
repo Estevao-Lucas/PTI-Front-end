@@ -41,9 +41,9 @@ function normalizeSymptoms(_symptoms) {
 let headerContent = document.getElementsByClassName("header-content");
 function addPatientData(patient) {
   const birthDate = new Date(patient.birth_date);
-  const formattedDate = `${birthDate.getDate().toString().padStart(2, "0")}/${(
-    birthDate.getMonth() + 1
-  )
+  const formattedDate = `${(birthDate.getDate() + 1)
+    .toString()
+    .padStart(2, "0")}/${(birthDate.getMonth() + 1)
     .toString()
     .padStart(2, "0")}/${birthDate.getFullYear()}`;
 
