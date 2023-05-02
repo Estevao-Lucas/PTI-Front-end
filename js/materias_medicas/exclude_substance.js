@@ -9,7 +9,7 @@ function deleteSubstance() {
       id = btn.parentElement.parentElement.children[0].innerHTML;
     })
   );
-  const url = `http://localhost:8000/api/substances/${id}`;
+  const url = `http://localhost:8000/api/substances/${id}/`;
   fetch(url, {
     method: "DELETE",
     headers: {

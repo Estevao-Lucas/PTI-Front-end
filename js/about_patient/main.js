@@ -2,6 +2,9 @@ let symptoms = [];
 
 let apiSymptoms = [];
 
+let patientID = localStorage.getItem("patientID");
+const patientURL = `http://localhost:8000/api/patients/${patientID}/`;
+
 async function getSymptoms() {
   const url = "http://localhost:8000/api/symptoms/";
   const response = await fetch(url);
@@ -11,14 +14,12 @@ async function getSymptoms() {
 }
 
 async function getPatient() {
-  const url = "http://localhost:8000/api/patients/1";
+  const url = `http://localhost:8000/api/patients/${patientID}/`;
   const response = await fetch(url);
   const data = await response.json();
   addPatientData(data);
   addElementsToSubstanceTable(data);
   normalizeSymptoms(data.symptoms);
-  console.log(data);
-  console.log(symptoms);
   return data;
 }
 
@@ -330,7 +331,7 @@ function validateForm() {
 }
 
 const confirmRepertorization = function () {
-  const url = "http://localhost:8000/api/patients/1";
+  url = patientURL;
   if (symptoms.length === 0) {
     tagError.innerHTML =
       "<strong>Error</strong> Adicione pelo menos um sintoma!";
