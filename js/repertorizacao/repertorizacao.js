@@ -232,8 +232,39 @@ function validateForm() {
   });
 }
 
-const confirmRepertorization = function () {
+function createPatient(bodyToPost) {
   const url = "http://localhost:8000/api/patients/";
+  const tagError = document.querySelector("#error-added-symptom");
+
+  return fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: bodyToPost,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          "houve uma falha na confirmação verifique os dados e tente novamente!"
+        );
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      localStorage.setItem("patientID", data.id);
+    })
+    .catch((error) => {
+      tagError.innerHTML = `<strong>Error ${error.message}</strong> <br> Caso o erro persista entre em contato com o suporte!`;
+      tagError.classList.remove("hidden");
+    })
+    .finally(() => {
+      closeRepertorizationModal();
+    });
+}
+
+const confirmRepertorization = async function () {
   if (symptoms.length === 0) {
     tagError.innerHTML =
       "<strong>Error</strong> Adicione pelo menos um sintoma!";
@@ -256,15 +287,8 @@ const confirmRepertorization = function () {
     birth_date: data.birthday,
     symptoms: symptomsIdsString,
   });
-  // TODO: add error handling
-  fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-    body: bodyToPost,
-  });
-  closeRepertorizationModal();
+  await createPatient(bodyToPost);
+  window.location.href = "../components/about_patient.html";
 };
 
 confirmRepertorizationModalBtn.addEventListener(
