@@ -29,7 +29,7 @@ function normalizeSymptoms(_symptoms) {
     symptoms.push({
       id: v.id,
       name: v.name,
-      sub_category: v.sub_category.name,
+      sub_category: v.sub_category ? v.sub_category.name : "-",
       nature: v.nature,
       weight: v.weight,
     });
