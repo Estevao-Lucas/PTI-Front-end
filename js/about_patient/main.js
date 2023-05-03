@@ -405,7 +405,10 @@ function addSubstanceDetailTable(substance) {
   let result = "";
   substance.traeted_symptoms.forEach((v) => {
     symptoms.forEach((symptom) => {
-      subCategory = symptom.sub_category ? symptom.sub_category : symptom.name;
+      subCategory =
+        symptom.sub_category && symptom.sub_category !== "-"
+          ? symptom.sub_category
+          : symptom.name;
       if (subCategory == v) {
         result += `
         <tbody>
@@ -433,7 +436,6 @@ function addSubstanceDetailTable(substance) {
 
 function findSymptomsBySubstance(substanceName, patient) {
   patient.then((patient) => {
-    console.log(patient);
     if (patient.substance_punctuation) {
       patient.substance_punctuation.forEach((substanceToFind) => {
         if (substanceToFind.name === substanceName) {
