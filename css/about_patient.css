@@ -210,6 +210,10 @@ body{
     padding-bottom: 5%;
 }
 
+.substance-detail-table{
+    width: 90%;
+}
+
 table {
     width: 70%;
     border-collapse: collapse;
@@ -253,10 +257,22 @@ th {
     background-color: #f0f0e9;
 }
 
-td{
+table td{
     padding-left: 1.5%;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 } 
+
+.btn-inspect{
+    float: right;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    color: #4b4a4a;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 .btn-remove {
     float: right;
@@ -332,6 +348,40 @@ td{
     box-shadow: 0 0 0.3rem 0 rgb(155, 153, 153);
   }
 
+.substance-detail {
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.substance-detail-class{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: 60%;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    z-index: 2;
+    border-radius: 4px;
+    padding: 10px 20px 10px 20px;
+}
+
+.btn-close-substance-detail{
+    position: absolute;
+    right: .375rem;
+    margin-top: .4rem;
+    float: right;
+    border: none;
+    outline: none;
+    background-color: white;
+    z-index: 3;
+  }
 
 .overlay {
     position: fixed;

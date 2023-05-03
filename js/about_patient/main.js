@@ -22,8 +22,7 @@ async function getPatient() {
   normalizeSymptoms(data.symptoms);
   return data;
 }
-
-getPatient();
+let patient = getPatient();
 
 function normalizeSymptoms(_symptoms) {
   _symptoms.forEach((v) => {
@@ -89,8 +88,8 @@ function addElementsToSubstanceTable(patient) {
                 <td>${v.total_punctuation}</td>
                 <td>${v.traeted_symptoms.length}/${patient.symptoms.length}</td>
                 <td>
-                    <button class="btn-remove" data-id="${v.id}">
-                        Inspect
+                    <button class="btn-inspect" data-id="${v.id}">
+                        ...
                     </button>
                 </td>
             <tr>
@@ -106,6 +105,7 @@ function addElementsToSubstanceTable(patient) {
         </tr>
       </thead>
     ` + result;
+  openSubstanceModalBtn();
 }
 
 const pageSize = 5;
@@ -170,6 +170,7 @@ const setFilter = ({ target: { value } }) => {
   );
   addElementsToTable(symptomsToShow);
   removeSymptom();
+  openSubstanceModalBtn();
 };
 
 function searchSymptom(searchInput) {
@@ -204,7 +205,6 @@ overlay.addEventListener("click", closeIncludeModal);
 openIncludeModalBtn();
 
 // Remove Modal
-// TODO Adicionar o modal de remover sintoma junto da requisição PUT para remover o sintoma
 function removeSymptom() {
   let removeButtons = document.querySelectorAll(".btn-remove");
   removeButtons.forEach((button) => {
@@ -233,6 +233,7 @@ opcoesList.addEventListener("keyup", () => {
       : (option.style.display = "none");
   }
   removeSymptom();
+  openSubstanceModalBtn();
 });
 
 // add symptoms to options
@@ -276,6 +277,7 @@ const saveSymptom = function () {
     tagError.classList.remove("hidden");
   }
   removeSymptom();
+  openSubstanceModalBtn();
 };
 
 // Repertorization
@@ -355,6 +357,7 @@ const confirmRepertorization = function () {
     body: bodyToPost,
   });
   closeRepertorizationModal();
+  window.refreshPage();
 };
 
 confirmRepertorizationModalBtn.addEventListener(
@@ -371,12 +374,14 @@ function previousPage() {
   if (curPage > 1) curPage--;
   removeSymptom();
   addElementsToTable(symptoms);
+  openSubstanceModalBtn();
 }
 
 function nextPage() {
   if (curPage * pageSize < symptoms.length) curPage++;
   removeSymptom();
   addElementsToTable(symptoms);
+  openSubstanceModalBtn();
 }
 
 document
@@ -388,3 +393,78 @@ document
 
 removeSymptom();
 getSymptoms();
+
+// Substance Detail Modal
+const substanceModal = document.querySelector(".substance-detail");
+const closeSubstanceModalBtn = document.querySelector(
+  ".btn-close-substance-detail"
+);
+
+const substanceDetailTable = document.querySelector(".substance-detail-table");
+function addSubstanceDetailTable(substance) {
+  let result = "";
+  substance.traeted_symptoms.forEach((v) => {
+    symptoms.forEach((symptom) => {
+      subCategory = symptom.sub_category ? symptom.sub_category : symptom.name;
+      if (subCategory == v) {
+        result += `
+        <tbody>
+            <tr>
+                <td>${symptom.name}</td>
+                <td>${symptom.sub_category ? symptom.sub_category : "-"}</td>
+                <td>${symptom.nature}</td>
+                <td>${symptom.weight}</td>
+            <tr>
+        </tbody>`;
+        substanceDetailTable.innerHTML =
+          `<thead>
+        <tr>
+            <th>CATEGORIA</th>
+            <th>SUB CATEGORIA</th>
+            <th>NATUREZA</th>
+            <th>PESO</th>
+            <th></th>
+        </tr>
+        </thead>` + result;
+      }
+    });
+  });
+}
+
+function findSymptomsBySubstance(substanceName, patient) {
+  patient.then((patient) => {
+    console.log(patient);
+    if (patient.substance_punctuation) {
+      patient.substance_punctuation.forEach((substanceToFind) => {
+        if (substanceToFind.name === substanceName) {
+          addSubstanceDetailTable(substanceToFind);
+        }
+      });
+    } else {
+      console.log(`Substance ${substanceName} not found in patient`);
+    }
+  });
+}
+
+function openSubstanceModalBtn() {
+  let inspectButtons = document.querySelectorAll(".btn-inspect");
+  inspectButtons.forEach((button) => {
+    let substance = button.parentElement.parentElement.children[1].innerHTML;
+    button.addEventListener("click", () => {
+      findSymptomsBySubstance(substance, patient);
+      substanceModal.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    });
+  });
+}
+
+const closeSubstanceModal = function () {
+  tagError.classList.add("hidden");
+  tagError.innerHTML = "";
+  substanceModal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+closeSubstanceModalBtn.addEventListener("click", closeSubstanceModal);
+overlay.addEventListener("click", closeSubstanceModal);
+openSubstanceModalBtn();
