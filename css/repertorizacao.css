@@ -360,6 +360,7 @@ td{
 /* Inicio do Footer */
 
 #footer{
+    top: 30%;
     display: flex;
     padding-top: 1.5%;
     justify-content: end;
