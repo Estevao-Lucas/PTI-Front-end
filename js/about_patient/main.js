@@ -1,6 +1,6 @@
 let symptoms = [];
-
 let apiSymptoms = [];
+let substancePunctuation = [];
 
 let patientID = localStorage.getItem("patientID");
 const patientURL = `http://localhost:8000/api/patients/${patientID}/`;
@@ -17,8 +17,11 @@ async function getPatient() {
   const url = `http://localhost:8000/api/patients/${patientID}/`;
   const response = await fetch(url);
   const data = await response.json();
+  data.substance_punctuation.forEach((v) => {
+    substancePunctuation.push(v);
+  });
   addPatientData(data);
-  addElementsToSubstanceTable(data);
+  addElementsToSubstanceTable(data.substance_punctuation, data);
   normalizeSymptoms(data.symptoms);
   return data;
 }
@@ -81,10 +84,17 @@ function comparePunctuation(a, b) {
   return b.total_punctuation - a.total_punctuation;
 }
 
-function addElementsToSubstanceTable(patient) {
+function addElementsToSubstanceTable(elements, patient) {
+  let start = (curPage - 1) * pageSize;
+  let end = curPage * pageSize;
   let result = "";
-  patient.substance_punctuation.sort(comparePunctuation).forEach((v) => {
-    result += `
+  elements
+    .filter((row, index) => {
+      if (index >= start && index < end) return true;
+    })
+    .sort(comparePunctuation)
+    .forEach((v) => {
+      result += `
         <tbody>
             <tr> 
                 <td hidden>${v.id}</td>
@@ -98,7 +108,7 @@ function addElementsToSubstanceTable(patient) {
                 </td>
             <tr>
         </tbody>`;
-  });
+    });
   substanceTable[0].innerHTML =
     ` <thead>
         <tr>
@@ -111,7 +121,6 @@ function addElementsToSubstanceTable(patient) {
     ` + result;
   openSubstanceModalBtn();
 }
-
 const pageSize = 5;
 let curPage = 1;
 let table = document.getElementsByClassName("symptom-table");
@@ -395,6 +404,32 @@ document
   .querySelector("#prevButton")
   .addEventListener("click", previousPage, false);
 
+function previousPageSubstance() {
+  patient.then((patient) => {
+    if (curPage > 1) curPage--;
+    openSubstanceModalBtn();
+    addElementsToSubstanceTable(substancePunctuation, patient);
+    openSubstanceModalBtn();
+  });
+}
+
+function nextPageSubstance() {
+  patient.then((patient) => {
+    if (curPage * pageSize < substancePunctuation.length) curPage++;
+    openSubstanceModalBtn();
+    addElementsToSubstanceTable(substancePunctuation, patient);
+    openSubstanceModalBtn();
+  });
+}
+
+document
+  .querySelector("#nextButtonSubstance")
+  .addEventListener("click", nextPageSubstance, false);
+document
+  .querySelector("#prevButtonSubstance")
+  .addEventListener("click", previousPageSubstance, false);
+
+console.log(substancePunctuation);
 removeSymptom();
 getSymptoms();
 
