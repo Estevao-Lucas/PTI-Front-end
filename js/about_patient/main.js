@@ -77,9 +77,13 @@ function addPatientData(patient) {
 
 let substanceTable = document.getElementsByClassName("substance-table");
 
+function comparePunctuation(a, b) {
+  return b.total_punctuation - a.total_punctuation;
+}
+
 function addElementsToSubstanceTable(patient) {
   let result = "";
-  patient.substance_punctuation.forEach((v) => {
+  patient.substance_punctuation.sort(comparePunctuation).forEach((v) => {
     result += `
         <tbody>
             <tr> 
