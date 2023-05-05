@@ -1,3 +1,5 @@
+const pageSize = 5;
+let curPage = 1;
 let symptoms = [];
 let apiSymptoms = [];
 let substancePunctuation = [];
@@ -86,13 +88,13 @@ function comparePunctuation(a, b) {
 
 function addElementsToSubstanceTable(elements, patient) {
   let start = (curPage - 1) * pageSize;
-  let end = curPage * pageSize;
+  let end = Math.min(curPage * pageSize, elements.length);
   let result = "";
   elements
+    .sort(comparePunctuation)
     .filter((row, index) => {
       if (index >= start && index < end) return true;
     })
-    .sort(comparePunctuation)
     .forEach((v) => {
       result += `
         <tbody>
@@ -121,8 +123,7 @@ function addElementsToSubstanceTable(elements, patient) {
     ` + result;
   openSubstanceModalBtn();
 }
-const pageSize = 5;
-let curPage = 1;
+
 let table = document.getElementsByClassName("symptom-table");
 
 function addElementsToTable(elements) {
