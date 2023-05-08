@@ -430,7 +430,6 @@ document
   .querySelector("#prevButtonSubstance")
   .addEventListener("click", previousPageSubstance, false);
 
-console.log(substancePunctuation);
 removeSymptom();
 getSymptoms();
 
