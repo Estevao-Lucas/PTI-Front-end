@@ -18,7 +18,7 @@
                 <div class="flex items-center p-3 w-full space-x-6">
                     <label class="block">
                         <span class="text-gray-700 text-sm">Categoria</span>
-                        <input type="text" class="
+                        <input id="categoria" type="text" class="
                     mt-1
                     text-sm
                     block
@@ -32,7 +32,7 @@
                     </label>
                     <label class="block">
                         <span class="text-gray-700 text-sm">Sub-Categoria</span>
-                        <select class="
+                        <select id="sub-categoria" class="
           text-sm
                     text-gray-500
                     block
@@ -49,7 +49,7 @@
                             <option>Exemplo 2</option>
                         </select>
                     </label>
-                    <button class="rounded bg-blue-200 text-blue-600 py-1 px-3 font-semibold text-sm hover:bg-blue-300">
+                    <button id="search-button" class="rounded bg-blue-200 text-blue-600 py-1 px-3 font-semibold text-sm hover:bg-blue-300">
                         Pesquisar
                     </button>
                 </div>
@@ -88,28 +88,30 @@
                         </tbody>
                     </table>
                     <div class="flex items-center space-x-32">
-                    <span class="text-sm text-blue-600 leading-none cursor-pointer">
-                        Mostrar tudo
-                    </span>
-                        <div class="flex items-center">
-                        <span class="text-xs text-gray-300 mr-3 leading-none">
-                            Mostrando 1-10 de 100 itens
+                        <span id="mostrar-tudo" class="text-sm text-blue-600 leading-none cursor-pointer">
+                            Mostrar tudo
                         </span>
+
+                        <div class="flex items-center">
+                            <span class="text-xs text-gray-300 mr-3 leading-none">
+                                Mostrando 1-10 de 100 itens
+                            </span>
                             <div class="flex space-x-2 items-center">
-                                <span class="cursor-pointer text-xs leading-none text-gray-400"><</span>
-                                <span class="cursor-pointer py-1 px-2 rounded-full bg-yellow-400 text-blue-600 text-xs leading-none">1</span>
-                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded">2</span>
-                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded">3</span>
-                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded">4</span>
-                                <span class="cursor-pointer text-xs leading-none text-gray-600"> > </span>
+                                <span class="cursor-pointer text-xs leading-none text-gray-400" onclick="previousPage()"><</span>
+                                <span class="cursor-pointer py-1 px-2 rounded-full bg-yellow-400 text-blue-600 text-xs leading-none" onclick="goToPage(1)">1</span>
+                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded" onclick="goToPage(2)">2</span>
+                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded" onclick="goToPage(3)">3</span>
+                                <span class="cursor-pointer py-1 px-2 bg-blue-300 text-blue-600 text-xs leading-none rounded" onclick="goToPage(4)">4</span>
+                                <span class="cursor-pointer text-xs leading-none text-gray-600" onclick="nextPage()">></span>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="p-4 space-y-6 border-t">
                     <div class="flex justify-end space-x-2">
-                        <button class="rounded text-sm bg-blue-200 text-blue-600 p-2 cursor-pointer hover:bg-blue-300">MENU PRINCIPAL</button>
-                        <button class="rounded text-sm bg-yellow-300 text-blue-600 p-2 cursor-pointer hover:bg-yellow-400">NOVO SINTOMA</button>
+                        <a href="../index.html" class="button rounded text-sm bg-blue-200 text-blue-600 p-2 cursor-pointer hover:bg-blue-300">MENU PRINCIPAL</a>
+                        <button id="novo-sintoma-button" class="rounded text-sm bg-yellow-300 text-blue-600 p-2 cursor-pointer hover:bg-yellow-400">NOVO SINTOMA</button>
                     </div>
                 </div>
             </div>
@@ -118,6 +120,13 @@
 
     </section>
 </main>
+
+<div class="modal-overlay hidden" id="myModal">
+    <div id="modal-container" class="modal-container">
+        <div id="modalContent"></div>
+    </div>
+</div>
+
 <footer id="footer">
 
 </footer>
@@ -135,5 +144,152 @@
         overflow:hidden;
         font-family: 'Quicksand', sans-serif;
     }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Adjust the transparency as desired */
+        z-index: 9999; /* Ensure the overlay appears on top of other elements */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-container {
+        position: relative;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        max-width: 500px;
+        width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
 </style>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const search_button = document.querySelector('#search-button');
+        search_button.addEventListener('click', () => {
+            const categoria = document.querySelector('#categoria').value;
+            const subCategoria = document.querySelector('#sub-categoria').value;
+
+            console.log('Categoria:', categoria);
+            console.log('Sub-Categoria:', subCategoria);
+        });
+
+        const novo_button = document.querySelector('#novo-sintoma-button');
+        novo_button.addEventListener('click', () => {
+            loadModal();
+        });
+    });
+
+    function loadModal() {
+        // Create a new div element
+        document.querySelector(".modal-overlay").classList.remove("hidden");
+        document.querySelector(".modal-overlay").classList.add("flex");
+        const modalContainer = document.getElementById('modal-container');
+        const modalDiv = document.createElement('div');
+
+        // Load the modal content from novo_sintoma.html using AJAX
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                modalDiv.innerHTML = this.responseText;
+
+                // Busca categoria enquanto digita
+                const searchCategoriaModal = modalDiv.querySelector('#search-categoria-modal');
+                let timeoutId;
+
+                function debounce(callback, delay) {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(callback, delay);
+                }
+
+                searchCategoriaModal.addEventListener('keydown', function () {
+                    clearTimeout(timeoutId);
+                });
+
+                searchCategoriaModal.addEventListener('keyup', function () {
+                    debounce(function () {
+                        const inputValue = searchCategoriaModal.value;
+                        console.log('Input value:', inputValue);
+                        // Perform your request or any other action using the input value here
+                    }, 500); // Delay in milliseconds before executing the event
+                });
+
+                // Close the modal when the close button is clicked
+                const closeButton = modalDiv.querySelector('.modal-close');
+                closeButton.addEventListener('click', () => {
+                    document.querySelector(".modal-overlay").classList.add("hidden");
+                    document.querySelector(".modal-overlay").classList.remove("flex");
+                    modalDiv.remove();
+                });
+
+                // Request para adicionar categoria no backend
+                const novaCategoria = modalDiv.querySelector('#nova-categoria');
+                novaCategoria.addEventListener('click', () => {
+                    let novaCategoriaValue = document.querySelector("#search-categoria-modal").value;
+                    console.log(novaCategoriaValue)
+                });
+
+                // Adiciona substancias
+                const addButton = document.getElementById('addButton');
+                const selectedValuesContainer = document.getElementById('selectedValues');
+                const selectElement = document.getElementById('substancia');
+
+                addButton.addEventListener('click', function () {
+                    const selectedValue = selectElement.value;
+                    const newElement = document.createElement('div');
+                    newElement.classList.add('flex', 'items-center', 'space-x-1');
+                    newElement.innerHTML = `
+                        <button class="bg-gray-200 hover:bg-gray-300 text-white font-bold py-4 px-4 rounded-full relative">
+                          <span class="bg-black h-6 w-6 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                            <svg class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M6.293 6.293a1 1 0 011.414 0L10 8.586l2.293-2.293a1 1 0 111.414 1.414L11.414 10l2.293 2.293a1 1 0 01-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 01-1.414-1.414L8.586 10 6.293 7.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                          </span>
+                        </button>
+                        <span>${selectedValue}</span>
+                     `;
+                    selectedValuesContainer.appendChild(newElement);
+
+                    const removeButton = newElement.querySelector('button');
+                    removeButton.addEventListener('click', function () {
+                        newElement.remove();
+                    });
+                });
+            }
+        };
+        xhttp.open('GET', 'novo_sintoma.html', true);
+        xhttp.send();
+
+        // Add the modal to the modal container
+        modalContainer.appendChild(modalDiv);
+    }
+
+    function previousPage() {
+        // Logic for going to the previous page
+        console.log("Previous page clicked");
+    }
+
+    function goToPage(pageNumber) {
+        // Logic for going to a specific page
+        console.log("Go to page " + pageNumber + " clicked");
+    }
+
+    function nextPage() {
+        // Logic for going to the next page
+        console.log("Next page clicked");
+    }
+
+    const mostrarTudo = document.getElementById("mostrar-tudo");
+    mostrarTudo.addEventListener("click", function() {
+        // Logic for handling "Mostrar tudo" click event
+        console.log("Mostrar tudo clicked");
+    });
+</script>
 </html>
